@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <img src="./img/rescuApp-Logo.png" width="96" height="96">
-    <a class="navbar-item" href="">
+    <a class="navbar-item" href="index.php?vista=principal">
       <strong>RescuApp</strong>
     </a>
 
@@ -13,6 +13,26 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Usuarios
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item">Nuevo</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Ver Lista</a>
+        </div>
+    </div>
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Rescuers
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item">Nuevo</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Ver Lista</a>
+        </div>
+    </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
