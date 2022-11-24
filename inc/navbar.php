@@ -15,25 +15,20 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Usuarios
+          Admin
         </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item">Nuevo</a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">Ver Lista</a>
-        </div>
-    </div>
-    <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Rescuers
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item">Nuevo</a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">Ver Lista</a>
-        </div>
-    </div>
 
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="index.php?vista=user_list">Lista de Usuarios</a>
+          <a class="navbar-item" href="index.php?vista=user_search">Buscar Usuario</a>
+          <a class="navbar-item" href="index.php?vista=report_update">Actualizar Reporte</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="index.php?vista=rescuer_new">Nuevo Rescuer</a>
+          <a class="navbar-item" href="index.php?vista=rescuer_list">Lista de Rescuer</a>
+          <a class="navbar-item" href="index.php?vista=rescuer_search">Buscar Rescuer</a>
+          <a class="navbar-item" href="index.php?vista=rescuer_update">Actualizar Rescuer</a>
+        </div>
+    </div>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
