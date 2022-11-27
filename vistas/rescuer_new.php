@@ -17,43 +17,43 @@
 		  	<div class="column">
 		    	<div class="control">
 					<label>Nombre</label>
-				  	<input class="input" type="text" name="rescuer_name" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+				  	<input class="input" type="text" name="rescuer_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Apellidos</label>
-				  	<input class="input" type="text" name="rescuer_surname" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+				  	<input class="input" type="text" name="rescuer_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Correo electrónico</label>
-				  	<input class="input" type="email" name="rescuer_mail" maxlength="70" required >
+				  	<input class="input" type="email" name="rescuer_correo" maxlength="70" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Teléfono</label>
-				  	<input class="input" type="number" name="rescuer_phone" pattern="[0-9$@.-]{8,15}" maxlength="70" required >
+				  	<input class="input" type="number" name="rescuer_telefono" pattern="[0-9$@.-]{8,15}" maxlength="70" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Dependencia</label>
-				  	<input class="input" type="text" name="rescuer_dependency" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
+				  	<input class="input" type="text" name="rescuer_dependencia" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Compañía</label>
-				  	<input class="input" type="text" name="rescuer_company" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
+				  	<input class="input" type="text" name="rescuer_compania" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Rol en la dependencia</label>
-				  	<input class="input" type="text" name="rescuer_role" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
+				  	<input class="input" type="text" name="rescuer_rol" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
 				</div>
 		  	</div>
 		  	<div class="column">

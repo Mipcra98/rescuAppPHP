@@ -3,13 +3,13 @@
 
      #Almacenar datos
      $ci=limpiar_cadena($_POST['rescuer_ci']);
-     $nombre=limpiar_cadena($_POST['rescuer_name']);
-     $apellido=limpiar_cadena($_POST['rescuer_surname']);
-     $mail=limpiar_cadena($_POST['rescuer_mail']);
-     $tel=limpiar_cadena($_POST['rescuer_phone']);
-     $dependency=limpiar_cadena($_POST['rescuer_dependency']);
-     $company=limpiar_cadena($_POST['rescuer_company']);
-     $role=limpiar_cadena($_POST['rescuer_role']);
+     $nombre=limpiar_cadena($_POST['rescuer_nombre']);
+     $apellido=limpiar_cadena($_POST['rescuer_apellido']);
+     $mail=limpiar_cadena($_POST['rescuer_correo']);
+     $tel=limpiar_cadena($_POST['rescuer_telefono']);
+     $dependency=limpiar_cadena($_POST['rescuer_dependencia']);
+     $company=limpiar_cadena($_POST['rescuer_compania']);
+     $role=limpiar_cadena($_POST['rescuer_rol']);
 
      $clave_1=limpiar_cadena($_POST['usuario_clave_1']);
      $clave_2=limpiar_cadena($_POST['usuario_clave_2']);
@@ -136,7 +136,8 @@
         ';
         exit();
      }else{
-        $clave=password_hash($clave_1,PASSWORD_BCRYPT,["cost"=>12]);
+        $clave=md5($clave_1);
+        #$clave=password_hash($clave_1,PASSWORD_BCRYPT,['cost'=>10]);
      }
 
      #Guardar datos a la BD
