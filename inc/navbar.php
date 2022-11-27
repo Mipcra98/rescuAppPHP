@@ -35,7 +35,7 @@
           <a class="button is-warning is-rounded">
             <strong>Configuración</strong>
           </a>
-          <a class="button is-light is-rounded">
+          <a href="index.php?vista=logout" class="button is-light is-rounded">
             Desconectarse
           </a>
         </div>

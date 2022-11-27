@@ -66,11 +66,12 @@
             $_SESSION['ci']=$check_usuario['rescuer_ci'];
             $_SESSION['nombre']=$check_usuario['rescuer_name'];
             $_SESSION['apellido']=$check_usuario['rescuer_surname'];
-            $_SESSION['correo']=$check_usuario['rescuer_correo'];
-            $_SESSION['telefono']=$check_usuario['rescuer_telefono'];
-            $_SESSION['dependencia']=$check_usuario['rescuer_dependencia'];
-            $_SESSION['compania']=$check_usuario['rescuer_compania'];
-            $_SESSION['rol']=$check_usuario['rescuer_rol'];
+            $_SESSION['correo']=$check_usuario['rescuer_mail'];
+            $_SESSION['telefono']=$check_usuario['rescuer_phone'];
+            $_SESSION['dependencia']=$check_usuario['rescuer_dependency'];
+            $_SESSION['compania']=$check_usuario['rescuer_company'];
+            $_SESSION['rol']=$check_usuario['rescuer_role'];
+            $_SESSION['ademin']=$check_usuario['rescuer_admin'];
 
             if(headers_sent()){
                 echo "<script> window.location.href='index.php?vista=principal';</script>";
