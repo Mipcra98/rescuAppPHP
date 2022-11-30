@@ -11,9 +11,11 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-item has-dropdown is-hoverable">
+  <?php
+  if ($_SESSION['ademin']=='1'){
+    echo '
+      <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Admin
         </a>
@@ -28,13 +30,22 @@
           <a class="navbar-item" href="index.php?vista=rescuer_search">Buscar Rescuer</a>
           <a class="navbar-item" href="index.php?vista=rescuer_update">Actualizar Rescuer</a>
         </div>
-    </div>
+      </div>
+    ';
+    }
+    ?>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-warning is-rounded">
-            <strong>Configuración</strong>
-          </a>
+          <?php 
+            if(isset($_SESSION['id'])){
+              echo '
+              <a href="index.php?vista=rescuer_update&rescuer_id_up='.$_SESSION['id'].'" class="button is-warning is-rounded">
+                <strong>Configuración</strong>
+              </a>
+              ';
+            }
+          ?>
           <a href="index.php?vista=logout" class="button is-light is-rounded">
             Desconectarse
           </a>

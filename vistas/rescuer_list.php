@@ -10,6 +10,10 @@
         
         $busqueda="";
 
+        if(isset($_GET['rescuer_id_del'])){
+            require_once "./php/borrar_rescuer.php";
+        }
+
         require_once "./php/listar_rescuers.php";
     ?>
 
@@ -22,7 +26,13 @@
                     <th>Apellidos</th>
                     <th>Teléfono</th>
                     <th>Dependencia</th>
-                    <th colspan="2">Acciones</th>
+                    <?php 
+                        if($_SESSION['ademin']=='1'){
+                            echo '<th colspan="2">Acciones</th>';
+                        }else{
+                            echo '<th colspan="1">Acciones</th>';
+                        }
+                    ?>
                 </tr>
             </thead>
             <tbody>

@@ -1,5 +1,6 @@
 <?php
     function listar_rescuers(){
+        //Busqueda no utilizada, pero para futuro ya está disponible
         if(isset($busqueda) && $busqueda==""){
             $consulta_datos="SELECT * FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%')) ORDER BY rescuer_id ASC";
             
@@ -37,13 +38,19 @@
                         <td>'.$rows['rescuer_phone'].'</td>
                         <td>'.$rows['rescuer_dependency'].'</td>
                         <td>
-                            <a href="index.php?vista=rescuer_update&rescuer_id_up='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
+                            <a href="index.php?vista=detalle_rescuer&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
                         </td>
-                        <td>
-                            <a href="index.php?vista=rescuer_list&rescuer_id_del='.$rows['rescuer_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
-                        </td>
-                    </tr>
                 ';
+                if($_SESSION['ademin']=='1'){
+                    echo '
+                            <td>
+                                <a href="index.php?vista=rescuer_list&rescuer_id_del='.$rows['rescuer_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
+                            </td>
+                        </tr>
+                    ';
+                }else{
+                    echo '</tr>';
+                }
                 $contador++;
             }
 

@@ -22,6 +22,12 @@
 			<button type="submit" class="button is-info is-rounded">Iniciar sesion</button>
 		</p>
 
+		<p class="has-text-centered mb-4 mt-3">
+			Aún no te has registrado como Rescuer?
+			<a href="index.php?vista=register"><strong>Registrate aquí</strong></a>
+		</p>
+
+
 		<?php
 			if(isset($_POST['login_correo']) && isset($_POST['login_clave'])){
 				require_once "./php/main.php";

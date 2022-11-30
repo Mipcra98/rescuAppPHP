@@ -4,7 +4,6 @@
 </div>
 <div class="container">
 	
-	<div class="form-rest"></div>
 	<div class="main-container">
 
 	<form action="./php/guardar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
@@ -70,8 +69,13 @@
 		  	</div>
 		<p class="has-text-centered">
 			<button type="submit" class="button is-info is-rounded">Guardar</button>
-		</p>
+		</p><br>
+		<div class="form-rest"></div>
 	</form>
+	<p class="has-text-centered mb-4 mt-3">
+		Ya estas registrado como Rescuer?
+		<a href="index.php?vista=login"><strong>Conectese aquí</strong></a>
+	</p>
 	</div>
 </div>
 

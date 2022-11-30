@@ -45,7 +45,7 @@
         return $cadena;
     }
     
-
+    
     /*
     Insertar usuario
     $pdo->query("INSERT INTO user(user_ci,user_name,user_surname,user_phone,user_birthday,
