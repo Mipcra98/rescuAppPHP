@@ -1,9 +1,9 @@
-<div class="container is-fluid mb-6">
+<div class="container is-fluid">
     <h1 class="title">Rescuers</h1>
     <h2 class="subtitle">Lista de Rescuers</h2>
 </div>
 
-<div class="container pb-6 pt-6">
+<div class="container pr-6 pl-6">
 
     <?php 
         require_once "./php/main.php";
@@ -15,6 +15,8 @@
         }
 
         require_once "./php/listar_rescuers.php";
+        
+		include "./inc/btn_volver.php";
     ?>
 
     <div class="table-container">

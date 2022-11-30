@@ -38,7 +38,7 @@
                         <td>'.$rows['rescuer_phone'].'</td>
                         <td>'.$rows['rescuer_dependency'].'</td>
                         <td>
-                            <a href="index.php?vista=detalle_rescuer&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
                         </td>
                 ';
                 if($_SESSION['ademin']=='1'){

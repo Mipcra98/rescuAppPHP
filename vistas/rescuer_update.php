@@ -8,13 +8,16 @@
 ?>
 
 
-<div class="container is-fluid mb-6">
+<div class="container is-fluid">
 	<h1 class="title">Rescuer</h1>
 	<h2 class="subtitle">Actualizar mi perfil</h2>
 </div>
 
-<div class="container">
+<div class="container pr-6 pl-6 pb-6">
+
 	<?php 
+
+		include "./inc/btn_volver.php";
 	
 		$check_rescuer=conexion();
 		$check_rescuer=$check_rescuer->query("SELECT * FROM rescuer WHERE rescuer_id='$id'");

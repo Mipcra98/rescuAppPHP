@@ -1,4 +1,4 @@
-<div class="container center is-fluid">
+<div class="container center is-fluid pb-4">
 	<h1 class="title">Rescuer</h1>
 	<h2 class="subtitle">Nuevo Rescuer</h2>
 </div>
@@ -71,11 +71,11 @@
 			<button type="submit" class="button is-info is-rounded">Guardar</button>
 		</p><br>
 		<div class="form-rest"></div>
+		<p class="has-text-centered mb-6 mt-2">
+			Ya estas registrado como Rescuer?
+			<a href="index.php?vista=login"><strong>Conectese aquí</strong></a>
+		</p>
 	</form>
-	<p class="has-text-centered mb-4 mt-3">
-		Ya estas registrado como Rescuer?
-		<a href="index.php?vista=login"><strong>Conectese aquí</strong></a>
-	</p>
 	</div>
 </div>
 
