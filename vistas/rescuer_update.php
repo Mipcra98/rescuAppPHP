@@ -32,7 +32,7 @@
 				<div class="column">
 					<div class="control">
 						<label>C.I. del Rescuer</label>
-						<input class="input" type="number" value="<?php echo $datos['rescuer_ci']; ?>" name="rescuer_ci" maxlength="40" required >
+						<input class="input" type="number" value="<?php echo $datos['rescuer_ci']; ?>" name="rescuer_ci" pattern="[0-9 ]{3,40}" maxlength="40" required >
 					</div>
 				</div>
 				<div class="column">

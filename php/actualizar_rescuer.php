@@ -26,7 +26,7 @@
      $clave_act=limpiar_cadena($_POST['usuario_clave']);
      $correo_act=limpiar_cadena($_POST['rescuer_correo']);
 
-     #Verificar campos obligatorios
+     #Verificar campos obligatorios para comprobar el perfil
      if($clave_act=="" || $correo_act==""){
         echo '
             <div class="notification is-danger is-light">
@@ -71,7 +71,7 @@
             echo '
                 <div class="notification is-danger is-light">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>Los campos de "Correo" y "Contraseña" no son correctos</a>
+                    <a>Los campos de "Correo" y "Contraseña" actuales no son correctos</a>
                 </div>
             ';
             exit();
@@ -81,29 +81,27 @@
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Correo" y "Contraseña" no son correctos</a>
+                <a>Los campos de "Correo" y "Contraseña" actuales no son correctos</a>
             </div>
         ';
         exit();
     }
     $check_datos=null;
     
+    
+    $ci=limpiar_cadena($_POST['rescuer_ci']);
+    $nombre=limpiar_cadena($_POST['rescuer_nombre']);
+    $apellido=limpiar_cadena($_POST['rescuer_apellido']);
+    $new_mail=limpiar_cadena($_POST['rescuer_nuevo_correo']);
+    $tel=limpiar_cadena($_POST['rescuer_telefono']);
+    $dependency=limpiar_cadena($_POST['rescuer_dependencia']);
+    $company=limpiar_cadena($_POST['rescuer_compania']);
+    $role=limpiar_cadena($_POST['rescuer_rol']);
+    $new_clave_1=limpiar_cadena($_POST['usuario_clave_nueva_1']);
+    $new_clave_2=limpiar_cadena($_POST['usuario_clave_nueva_2']);
 
-
-     /*
-     $ci=limpiar_cadena($_POST['rescuer_ci']);
-     $nombre=limpiar_cadena($_POST['rescuer_nombre']);
-     $apellido=limpiar_cadena($_POST['rescuer_apellido']);
-     $new_mail=limpiar_cadena($_POST['rescuer_nuevo_correo']);
-     $tel=limpiar_cadena($_POST['rescuer_telefono']);
-     $dependency=limpiar_cadena($_POST['rescuer_dependencia']);
-     $company=limpiar_cadena($_POST['rescuer_compania']);
-     $role=limpiar_cadena($_POST['rescuer_rol']);
-     $new_clave_1=limpiar_cadena($_POST['usuario_clave_nueva_1']);
-     $new_clave_2=limpiar_cadena($_POST['usuario_clave_nueva_2']);
-
-     #Verificr campos obligatorios
-     if($ci=="" || $nombre=="" || $apellido=="" || $new_mail=="" || $tel=="" || $dependency=="" || $company=="" || $role=="" || $clave_act=="" || $correo_act==""){
+    #Verificr campos obligatorios
+    if($ci=="" || $nombre=="" || $apellido=="" || $new_mail=="" || $tel=="" || $dependency=="" || $company=="" || $role==""){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -111,9 +109,19 @@
             </div>
         ';
         exit();
-     } || $new_clave_1=="" || $new_clave_2=="" 
+     }  
 
      #Verificar integridad de datos
+     if(verificar_datos("[0-9 ]{3,40}",$ci)){
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrió un error inesperado!</strong><br>
+                <a>El campo "C.I." no coincide con el formato solicitado</a>
+            </div>
+        ';
+        exit();
+     }  
+
      if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
         echo '
             <div class="notification is-danger is-light">
@@ -164,16 +172,6 @@
         exit();
      }
 
-     if(verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$clave_1) || verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$clave_2)){
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Contaseña" no coinciden con el formato solicitado</a>
-            </div>
-        ';
-        exit();
-     }
-
      if(verificar_datos("[0-9$@.-]{8,15}",$tel)){
         echo '
             <div class="notification is-danger is-light">
@@ -188,10 +186,10 @@
 
     # Verificación de E-mail en uso
 
-     if($mail!=""){
-        if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+     if($new_mail!="" && $new_mail!=$datos['rescuer_mail']){
+        if(filter_var($new_mail, FILTER_VALIDATE_EMAIL)){
             $check_mail=conexion();
-            $check_mail=$check_mail->query("SELECT rescuer_mail FROM rescuer WHERE rescuer_mail='$mail'");
+            $check_mail=$check_mail->query("SELECT rescuer_mail FROM rescuer WHERE rescuer_mail='$new_mail'");
             if($check_mail->rowCount()>0){
                 echo '
                     <div class="notification is-danger is-light">
@@ -213,56 +211,67 @@
         }
      }
 
+    if($new_clave_1!="" || $new_clave_2=""){
+        //Verificación de contraseñas de acuerdo al pattern
+        if(verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$new_clave_1) || verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$new_clave_2)){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong>¡Ocurrió un error inesperado!</strong><br>
+                    <a>Los campos de "Contraseña y Repetición" no coinciden con el formato solicitado</a>
+                </div>
+            ';
+            exit();
+        }else{
+            #Verificación de claves iguales
+            if($new_clave_1!=$new_clave_2){
+                echo '
+                    <div class="notification is-danger is-light">
+                        <strong>¡Ocurrió un error inesperado!</strong><br>
+                        <a>Los campos de "Contraseña y Repetición" no coinciden entre sí</a>
+                    </div>
+                ';
+                exit();
+            }else{
+                $clave=md5($new_clave_1);
+                #$clave=password_hash($clave_1,PASSWORD_BCRYPT,['cost'=>10]);
+            }
+        }
+    }else{
+        $clave=$datos['rescuer_pass'];
+    }
 
-     #Verificación de claves iguales
-     if($clave_1!=$clave_2){
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Contraseña y Repetición" no coinciden entre sí</a>
-            </div>
-        ';
-        exit();
-     }else{
-        $clave=md5($clave_1);
-        #$clave=password_hash($clave_1,PASSWORD_BCRYPT,['cost'=>10]);
-     }
+    #ACTUALIZAR datos a la BD
+    $actualizar_rescuer=conexion();
+    $actualizar_rescuer=$actualizar_rescuer->prepare("UPDATE rescuer SET rescuer_ci=:ci,rescuer_pass=:clave_encriptada,
+    rescuer_name=:nombre,rescuer_surname=:apellido,rescuer_mail=:new_mail,rescuer_dependency=:dependency,
+    rescuer_company=:company,rescuer_role=:role,rescuer_phone=:phone WHERE rescuer_id=:id");
 
-     #Guardar datos a la BD
-     $guardar_rescuer=conexion();
-     $guardar_rescuer=$guardar_rescuer->prepare("INSERT INTO rescuer(rescuer_ci,rescuer_pass,rescuer_name,rescuer_surname,
-     rescuer_mail,rescuer_dependency,rescuer_company,rescuer_role,rescuer_phone) VALUES(:ci,
-     :clave_encriptada,:nombre,:apellido,:mail,:dependency,:company,:role,:phone)");
+   $marcadores=[
+       ":id"=>$id,
+       ":ci"=>$ci,
+       ":clave_encriptada"=>$clave,
+       ":nombre"=>$nombre,
+       ":apellido"=>$apellido,
+       ":new_mail"=>$new_mail,
+       ":dependency"=>$dependency,
+       ":company"=>$company,
+       ":role"=>$role,
+       ":phone"=>$tel
+   ];
 
-    $marcadores=[
-        ":ci"=>$ci,
-        ":clave_encriptada"=>$clave,
-        ":nombre"=>$nombre,
-        ":apellido"=>$apellido,
-        ":mail"=>$mail,
-        ":dependency"=>$dependency,
-        ":company"=>$company,
-        ":role"=>$role,
-        ":phone"=>$tel
-    ];
-
-     $guardar_rescuer->execute($marcadores);
-
-     if($guardar_rescuer->rowCount()==1){
-        echo '
-            <div class="notification is-success is-light">
-                <strong>¡Usuario Registrado!</strong><br>
-                <a>El usuario se registró exitosamente</a>
-            </div>
-        ';
-     }else{
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No se ha podido registrar este usuario, porfavor intente nuevamente</a>
-            </div>
-        ';
-     }
-     $guardar_rescuer=null;*/
-     
-     
+    if($actualizar_rescuer->execute($marcadores)){
+       echo '
+           <div class="notification is-success is-light">
+               <strong>¡Usuario Actualizado!</strong><br>
+               <a>El usuario se actualizó exitosamente</a>
+           </div>
+       ';
+    }else{
+       echo '
+           <div class="notification is-danger is-light">
+               <strong>¡Ocurrió un error inesperado!</strong><br>
+               <a>No se ha podido registrar este usuario, porfavor intente nuevamente</a>
+           </div>
+       ';
+    }
+    $actualizar_rescuer=null;

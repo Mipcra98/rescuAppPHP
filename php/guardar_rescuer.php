@@ -26,6 +26,17 @@
      }
 
      #Verificar integridad de datos
+     if(verificar_datos("[0-9 ]{3,40}",$ci)){
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrió un error inesperado!</strong><br>
+                <a>El campo "C.I." no coincide con el formato solicitado</a>
+            </div>
+        ';
+        exit();
+     }
+
+     #Verificar integridad de datos
      if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
         echo '
             <div class="notification is-danger is-light">
