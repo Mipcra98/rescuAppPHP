@@ -2,11 +2,11 @@
     function listar_rescuers(){
         //Busqueda no utilizada, pero para futuro ya está disponible
         if(isset($busqueda) && $busqueda==""){
-            $consulta_datos="SELECT * FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%')) ORDER BY rescuer_id ASC";
+            $consulta_datos="SELECT * FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%')) ORDER BY rescuer_id DESC";
             
             $consulta_total="SELECT COUNT(rescuer_id) FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%'))"; 
         }else{
-            $consulta_datos="SELECT * FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."' ORDER BY rescuer_id ASC";
+            $consulta_datos="SELECT * FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."' ORDER BY rescuer_id DESC";
             
             $consulta_total="SELECT COUNT(rescuer_id) FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."'"; 
         }
@@ -40,17 +40,8 @@
                         <td>
                             <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
                         </td>
+                    </tr>
                 ';
-                if($_SESSION['ademin']=='1'){
-                    echo '
-                            <td>
-                                <a href="index.php?vista=rescuer_list&rescuer_id_del='.$rows['rescuer_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
-                            </td>
-                        </tr>
-                    ';
-                }else{
-                    echo '</tr>';
-                }
                 $contador++;
             }
 

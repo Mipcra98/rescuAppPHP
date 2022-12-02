@@ -1,6 +1,12 @@
 <?php
     $rescuer_id_del=limpiar_cadena($_GET['rescuer_id_del']);
-    if($_SESSION['ademin']=='1'){ //comprobación de admin
+
+    //verificar que el usuario de sesión en Admin
+	$check_adm=conexion();
+	$check_adm=$check_adm->query("SELECT rescuer_admin FROM rescuer WHERE rescuer_id='".$_SESSION['id']."'");
+	$check_adm=$check_adm->fetch();
+
+    if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1']){ //comprobación de admin
         //verificación de existencia del rescuer
         $check_existencia=conexion();
         $check_existencia=$check_existencia->query("SELECT rescuer_id FROM rescuer WHERE rescuer_id='$rescuer_id_del'");
@@ -52,4 +58,12 @@
 
         }
         $check_existencia=null;
+    }else{
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrió un error inesperado!</strong><br>
+                <a>Usted no puede realizar esta operación</a>
+            </div>
+        ';
     }
+    $check_adm=null;

@@ -1,6 +1,6 @@
 <div class="main-container">
-
     <form class="box login" action="" method="POST" autocomplete="off">
+		<div class="form-rest"></div><br>
         <img class="logo-center" src="./img/rescuApp-Logo.png">
 		<h5 class="title is-5 has-text-centered is-uppercase">RescuApp</h5>
 

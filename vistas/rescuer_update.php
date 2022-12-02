@@ -30,6 +30,7 @@
 
 	<div class="main-container">
 		<form action="./php/actualizar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
+		<div class="form-rest"></div><br>
 			<input type="hidden" value="<?php echo $datos['rescuer_id']; ?>" name="rescuer_id" required >
 			<div class="columns">
 				<div class="column">
@@ -119,8 +120,7 @@
 			</div>
 			<p class="has-text-centered">
 				<button type="submit" class="button is-info is-rounded">Actualizar</button>
-			</p><br>
-		<div class="form-rest"></div>
+			</p>
 		</form>
 	</div>
 	
