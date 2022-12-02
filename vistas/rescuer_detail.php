@@ -39,11 +39,11 @@
         $check_adm=null;
 
         if(isset($_GET['rescuer_adm'])){
-            require_once "./php/btn_admin.php";
+            require_once "./php/btn_rescuer_adm.php";
         }
 
         if(isset($_GET['rescuer_stat'])){
-            require_once "./php/btn_stat.php";
+            require_once "./php/btn_rescuer_stat.php";
         }
 	
 		$mostrar_rescuer=conexion();

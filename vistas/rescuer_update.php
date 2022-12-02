@@ -119,7 +119,7 @@
 				</div>
 			</div>
 			<p class="has-text-centered">
-				<button type="submit" class="button is-info is-rounded">Actualizar</button>
+				<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Actualizar</button>
 			</p>
 		</form>
 	</div>

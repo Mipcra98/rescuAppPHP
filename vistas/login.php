@@ -19,7 +19,7 @@
 		</div>
 
 		<p class="has-text-centered mb-4 mt-3">
-			<button type="submit" class="button is-info is-rounded">Iniciar sesion</button>
+			<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Iniciar sesion</button>
 		</p>
 
 		<p class="has-text-centered mb-4 mt-3">

@@ -19,7 +19,7 @@
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr class="has-text-centered">
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Teléfono</th>

@@ -24,6 +24,10 @@
             $datos=$check_rescuer->fetch();
                 echo '
                     <tr>
+                        <td>ID del Rescuer</td>
+                        <td>'.$datos['rescuer_id'].'</td>
+                    </tr>
+                    <tr>
                         <td>C.I.</td>
                         <td>'.$datos['rescuer_ci'].'</td>
                     </tr>
@@ -61,14 +65,20 @@
                         echo '
                             <tr>
                                 <td>Rol de administrador</td>
-                                <td>SI<a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a></td>
+                                <td>
+                                    <p class="pr-6">SI  </p>
+                                    <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a>
+                                </td>
                             </tr>
                         ';
                     }else{
                         echo '
                             <tr>
                                 <td>Rol de administrador</td>
-                                <td>NO<a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a></td>
+                                <td>
+                                    <p class="pr-6">NO  </p>
+                                    <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a>
+                                </td>
                             </tr>
                         ';
                     }

@@ -2,11 +2,11 @@
     function listar_rescuers(){
         //Busqueda no utilizada, pero para futuro ya está disponible
         if(isset($busqueda) && $busqueda==""){
-            $consulta_datos="SELECT * FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%')) ORDER BY rescuer_id DESC";
+            //$consulta_datos="SELECT * FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%')) ORDER BY rescuer_id ASC";
             
-            $consulta_total="SELECT COUNT(rescuer_id) FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%'))"; 
+            //$consulta_total="SELECT COUNT(rescuer_id) FROM rescuer WHERE ((rescuer_id!='".$_SESSION['id']."') AND (rescuer_name LIKE '%$busqueda%' OR rescuer_surname LIKE '%$busqueda%' OR rescuer_dependency LIKE '%$busqueda%' OR rescuer_company LIKE '%$busqueda%' OR rescuer_role LIKE '%$busqueda%'))"; 
         }else{
-            $consulta_datos="SELECT * FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."' ORDER BY rescuer_id DESC";
+            $consulta_datos="SELECT * FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."' ORDER BY rescuer_id ASC";
             
             $consulta_total="SELECT COUNT(rescuer_id) FROM rescuer WHERE rescuer_id!='".$_SESSION['id']."'"; 
         }
@@ -28,21 +28,19 @@
                 </tr>
             ';
         }else{
-            $contador=1;
             foreach($datos as $rows){
                 echo '
                     <tr class="has-text-centered" >
-                        <td>'.$contador.'</td>
+                        <td>'.$rows['rescuer_id'].'</td>
                         <td>'.$rows['rescuer_name'].'</td>
                         <td>'.$rows['rescuer_surname'].'</td>
                         <td>'.$rows['rescuer_phone'].'</td>
                         <td>'.$rows['rescuer_dependency'].'</td>
                         <td>
-                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
                         </td>
                     </tr>
                 ';
-                $contador++;
             }
 
         }

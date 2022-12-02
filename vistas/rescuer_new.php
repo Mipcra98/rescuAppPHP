@@ -80,7 +80,7 @@
 				</div>
 		  	</div>
 		<p class="has-text-centered">
-			<button type="submit" class="button is-info is-rounded">Guardar</button>
+			<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Guardar</button>
 		</p><br>
 		<p class="has-text-centered mb-6 mt-2">
 			Ya estas registrado como Rescuer?

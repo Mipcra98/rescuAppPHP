@@ -2,11 +2,11 @@
     function listar_users(){
         //Busqueda no utilizada, pero para futuro ya está disponible
         if(isset($busqueda) && $busqueda==""){
-            $consulta_datos="SELECT * FROM user WHERE user_name LIKE '%$busqueda%' OR user_surname LIKE '%$busqueda%' OR user_dependency LIKE '%$busqueda%' OR user_company LIKE '%$busqueda%' OR user_role LIKE '%$busqueda%' ORDER BY user_id DESC";
+            //$consulta_datos="SELECT * FROM user WHERE user_name LIKE '%$busqueda%' OR user_surname LIKE '%$busqueda%' OR user_dependency LIKE '%$busqueda%' OR user_company LIKE '%$busqueda%' OR user_role LIKE '%$busqueda%' ORDER BY user_id ASC";
             
-            $consulta_total="SELECT COUNT(user_id) FROM user WHERE user_name LIKE '%$busqueda%' OR user_surname LIKE '%$busqueda%' OR user_dependency LIKE '%$busqueda%' OR user_company LIKE '%$busqueda%' OR user_role LIKE '%$busqueda%'"; 
+            //$consulta_total="SELECT COUNT(user_id) FROM user WHERE user_name LIKE '%$busqueda%' OR user_surname LIKE '%$busqueda%' OR user_dependency LIKE '%$busqueda%' OR user_company LIKE '%$busqueda%' OR user_role LIKE '%$busqueda%'"; 
         }else{
-            $consulta_datos="SELECT * FROM user ORDER BY user_id DESC";
+            $consulta_datos="SELECT * FROM user ORDER BY user_id ASC";
             
             $consulta_total="SELECT COUNT(user_id) FROM user"; 
         }
@@ -28,21 +28,19 @@
                 </tr>
             ';
         }else{
-            $contador=1;
             foreach($datos as $rows){
                 echo '
                     <tr class="has-text-centered" >
-                        <td>'.$contador.'</td>
+                        <td>'.$rows['user_id'].'</td>
                         <td>'.$rows['user_name'].'</td>
                         <td>'.$rows['user_surname'].'</td>
                         <td>'.$rows['user_phone'].'</td>
                         <td>'.$rows['user_mail'].'</td>
                         <td>
-                            <a href="index.php?vista=user_detail&user_id_deta='.$rows['user_id'].'" class="button is-warning is-rounded is-small">Ver a detalle</a>
+                            <a href="index.php?vista=user_detail&user_id_deta='.$rows['user_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
                         </td>
                     </tr>
                 ';
-                $contador++;
             }
 
         }

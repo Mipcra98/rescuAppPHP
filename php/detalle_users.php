@@ -19,6 +19,10 @@
             $datos=$check_user->fetch();
                 echo '
                     <tr>
+                        <td>ID del Usuario</td>
+                        <td>'.$datos['user_id'].'</td>
+                    </tr>
+                    <tr>
                         <td>C.I.</td>
                         <td>'.$datos['user_ci'].'</td>
                     </tr>

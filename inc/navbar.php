@@ -30,7 +30,7 @@
           <?php 
             if(isset($_SESSION['id'])){
               echo '
-              <a href="index.php?vista=rescuer_update&rescuer_id_up='.$_SESSION['id'].'" class="button is-warning is-rounded">
+              <a href="index.php?vista=rescuer_update&rescuer_id_up='.$_SESSION['id'].'" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">
                 <strong>Configuración</strong>
               </a>
               ';
