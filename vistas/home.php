@@ -1,6 +1,5 @@
 <div class="container is-fluid pb-4">
     <h1 class="title">Página Principal</h1>
-    <h2 class="subtitle">¡Bienvenido <?php echo $_SESSION['nombre']." ".$_SESSION['apellido'];?>!</h2>
     <h2 class="subtitle">Lista de Reportes</h2>
 </div>
 
@@ -30,7 +29,7 @@
                 ?>
                 <tr class="has-text-centered" >
                     <td colspan="6">
-                        <a href="index.php?vista=rescuer_list" class="button is-info is-rounded is-small mt-4 mb-4">
+                        <a href="index.php" class="button is-info is-rounded is-small mt-4 mb-4">
                             Haga clic acá para recargar el listado
                         </a>
                     </td>

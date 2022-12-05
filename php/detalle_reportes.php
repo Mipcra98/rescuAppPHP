@@ -1,0 +1,279 @@
+<?php
+    function detallar_reportes($id_detalle){
+        $campos="report.*,user.user_id,user.user_name,user.user_surname";
+
+            
+            $id_detalle=limpiar_cadena($id_detalle);
+            
+            //Verificación del reporte 
+            $check_report=conexion();
+            $check_report=$check_report->query("SELECT $campos FROM report INNER JOIN user ON report.report_userId=user.user_id WHERE report_id='$id_detalle'");
+    
+            if($check_report->rowCount()<=0){
+                echo '
+                    <div class="notification is-danger is-light">
+                        <strong>¡Ocurrió un error inesperado!</strong><br>
+                        <a>El Reporte no existe en el sistema</a>
+                    </div>
+                ';
+                exit();
+            }else{
+                $datos=$check_report->fetch();
+                
+                switch($datos['report_victimStatus']){
+                    case 1:
+                        $estado_victima="GRAVE";
+                        break;
+                    case 2:
+                        $estado_victima="LEVE";
+                        break;
+                    case 3:
+                        $estado_victima="FALLECIDO";
+                        break;
+                    case 4:
+                        $estado_victima="ILESO";
+                        break;
+                    default:
+                        $estado_victima="No se sabe";
+                        break;
+                }
+
+                //identificación del caso
+                switch($datos['report_accidentTipe']){
+                    case 1:
+                        $tipo_accidente="Choque";
+                        break;
+                    case 2:
+                        $tipo_accidente="Vuelco";
+                        break;
+                    case 3:
+                        $tipo_accidente="Arrollamiento";
+                        break;
+                    case 4:
+                        $tipo_accidente="Estampida";
+                        break;
+                    case 5:
+                        $tipo_accidente="Otro";
+                        break;
+                    default:
+                        $tipo_accidente="No se sabe";
+                        break;
+                }
+
+                //identificación de choque
+                switch($datos['report_crashTipe']){
+                    case 1:
+                        $tipo_choque="Moto y Auto";
+                        break;
+                    case 2:
+                        $tipo_choque="Moto y Bici";
+                        break;
+                    case 3:
+                        $tipo_choque="Moto y Veh.Pesado";
+                        break;
+                    case 4:
+                        $tipo_choque="Auto y Bici";
+                        break;
+                    case 5:
+                        $tipo_choque="Auto y Auto";
+                        break;
+                    case 6:
+                        $tipo_choque="Auto y Veh.Pesado";
+                        break;
+                    case 7:
+                        $tipo_choque="Bici y Veh.Pesado";
+                        break;
+                    case 8:
+                        $tipo_choque="Más de dos vehiculos";
+                        break;
+                    case 9:
+                        $tipo_choque="Otro";
+                        break;
+                    default:
+                        $tipo_choque="No se sabe";
+                        break;
+                }
+
+                //identificación de arrollamiento
+                switch($datos['report_runOver']){
+                    case 1:
+                        $arrollamiento="afectó a una o más Personas";
+                        break;
+                    case 2:
+                        $arrollamiento="afectó a un o más Animales";
+                        break;
+                    default:
+                        $arrollamiento="No se sabe";
+                        break;
+                }
+
+                    echo '
+                        <tr>
+                            <td>ID del reporte</td>
+                            <td>'.$datos['report_id'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de creación</td>
+                            <td>'.$datos['report_dateTime'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de víctimas</td>
+                            <td>'.$datos['report_numberVictims'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Accidente</td>
+                            <td>'.$tipo_accidente.'</td>
+                        </tr>
+                    ';
+
+                    if($tipo_accidente=="Choque"){
+                        echo '
+                            <tr>
+                                <td>Tipo de Choque</td>
+                                <td>Ocasionado entre '.$tipo_choque.'</td>
+                            </tr>
+                        ';
+                    }elseif($tipo_accidente=="Arrollamiento"){
+                        echo '
+                            <tr>
+                                <td>Tipo de Arrollamiento</td>
+                                <td>'.$arrollamiento.'</td>
+                            </tr>
+                        ';
+                    }else{
+                        echo '
+                            <tr>
+                                <td>Tipo de Choque</td>
+                                <td>'.$tipo_choque.'</td>
+                            </tr>
+                        ';
+                    }
+                    echo '
+                        <tr>
+                            <td>Esstádo de la o lás victimas</td>
+                            <td>'.$estado_victima.'</td>
+                        </tr>
+                    ';
+
+                    //Columna de Ubicación y sus otros posibles valores
+                    if($datos['report_coordinates']==""){
+                        $ubc="";
+                        if($datos['report_avenue1']!=""){
+                            $ubc=$datos['report_avenue1'];
+                        }
+                        if($datos['report_avenue2']!=""){
+                            $ubc=$ubc.' y '.$datos['report_avenue2'];
+                        }
+                        if($datos['report_street1']!=""){
+                            $ubc=$ubc.'</br>'.$datos['report_street1'];
+                        }
+                        if($datos['report_street2']!=""){
+                            $ubc=$ubc.' y '.$datos['report_street2'];
+                        }
+                        if($datos['report_reference']!=""){
+                            $ubc=$ubc.'</br>'.$datos['report_reference'];
+                        }
+                        if($ubc==""){
+                            echo '
+                                <tr>
+                                    <td>Ubicación</td>
+                                    <td>No se registró ninguna ubicación</td>
+                                </tr>
+                            ';
+                        }else{
+                            echo '
+                                <tr>
+                                    <td>Ubicación</td>
+                                    <td>'.$ubc.'</td>
+                                </tr>
+                            ';
+                        }
+                    }else{
+                        echo '
+                            <tr>
+                                <td>Ubicación</td>
+                                <td>'.$datos['report_coordinates'].'</td>
+                            </tr>
+                        ';
+                    }
+
+                    //mensaje de "notificación", es decir, ya se notificó?
+                    if($datos['report_notified']=='0'){
+                        $notificado="NO notificado";
+                    }else{
+                        $notificado="Ya se notificó";
+                    }
+
+                    //identificación de caso atendido o no
+                    if($datos['report_attendend']=='0'){
+                        $atendido="NO Atendido";
+                    }else{
+                        $atendido="Atendido";
+                    }
+
+                    echo '
+                        <tr>
+                            <td>Estado de notificación</td>
+                            <td>'.$notificado.'</td>
+                        </tr>
+                        <tr>
+                            <td>Estado de solicitud</td>
+                            <td>'.$atendido.'</td>
+                        </tr>
+                        <tr>
+                            <td>Usuario que reportó</td>
+                            <td>
+                                <p class="pr-6">'.ucwords($datos['user_name']).' '.ucwords($datos['user_surname']).'   </p>
+                                <a href="index.php?vista=user_detail&user_id_deta='.$datos['user_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
+                            </td>
+                        </tr>
+                    ';
+
+                    //identificación del tipo reporte segun el usuario
+                    if($datos['report_userType']=='0'){
+                        $tipo_user="Víctima";
+                    }else{
+                        $tipo_user="Testigo";
+                    }
+                    echo '
+                        <tr>
+                            <td>El usuario reportó como</td>
+                            <td>'.$tipo_user.'</td>
+                        </tr>
+                    ';
+
+                    //determinación de la existencia de un rescuer asociado
+                    if($datos['report_rescuerId']!=""){
+                        $conex_resc=conexion();
+                        $conex_resc=$conex_resc->query("SELECT rescuer_id,rescuer_name,rescuer_surname FROM rescuer WHERE rescuer_id='".$datos['report_rescuerId']."'");
+                        if($conex_resc->rowCount()){
+                            $datos=$conex_resc->fetch();
+                            echo '
+                            <tr>
+                                <td>Rescuer que atendió el caso</td>
+                                <td>
+                                    <p class="pr-6">'.ucwords($datos['rescuer_name']).' '.ucwords($datos['rescuer_surname']).'   </p>
+                                    <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
+                                </td>
+                            </tr>
+                            ';
+                        }else{
+                            echo '
+                            <tr class="has-text-centered" >
+                                <td colspan="2">Se produjo un error al cargar el Rescuer Asignado</td>
+                            </tr>
+                            ';
+                        }
+                        $conex_resc=null;
+                    }else{
+                        echo '
+                            <tr>
+                                <td>Rescuer que atendió el caso</td>
+                                <td>Aún no se asignó un rescuer</td>
+                            </tr>
+                        ';
+                    }
+                    
+                $check_report=null;
+            }
+        }

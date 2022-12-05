@@ -18,11 +18,14 @@
       </a>
       <div class="navbar-dropdown">
         <a class="navbar-item" href="index.php?vista=user_list">Lista de Usuarios</a>
-        <a class="navbar-item" href="index.php?vista=report_update">Actualizar Reporte</a>
+        <a class="navbar-item" href="index.php?vista=home">Lista de Reportes</a>
         <hr class="navbar-divider">
         <a class="navbar-item" href="index.php?vista=rescuer_new">Nuevo Rescuer</a>
         <a class="navbar-item" href="index.php?vista=rescuer_list">Lista de Rescuer</a>
       </div>
+    </div>
+    <div class="navbar-item">
+      <p>¡Bienvenido <strong><?php echo ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido']);?></strong>!</p>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
@@ -36,8 +39,8 @@
               ';
             }
           ?>
-          <a href="index.php?vista=logout" class="button is-light is-rounded">
-            Desconectarse
+          <a href="index.php?vista=logout" class="button is-light is-rounded" style="border-color:#000000;">
+          <strong>Desconectarse</strong>
           </a>
         </div>
       </div>

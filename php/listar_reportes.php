@@ -9,7 +9,7 @@
             
             //$consulta_total="SELECT COUNT(report_id) FROM report WHERE report_id LIKE '%$busqueda%' OR report_name LIKE '%$busqueda%' OR report_surname LIKE '%$busqueda%' OR report_dependency LIKE '%$busqueda%' OR report_company LIKE '%$busqueda%' OR report_role LIKE '%$busqueda%'"; 
         }else{
-            $consulta_datos="SELECT $campos FROM report INNER JOIN user ON report.report_userId=user.user_id ORDER BY report.report_dateTime ASC ";
+            $consulta_datos="SELECT $campos FROM report INNER JOIN user ON report.report_userId=user.user_id ORDER BY report.report_attendend ASC,report.report_dateTime DESC";
             
             $consulta_total="SELECT COUNT(report_id) FROM report"; 
         }
@@ -32,60 +32,116 @@
             ';
         }else{
             foreach($datos as $rows){
-                //require_once "./php/calc_edad.php";
-                
+                require_once "./php/calc_edad.php";
+                $edad=calc_edad($rows['user_birthday']);    //Calculo de edad del usuario
+
+                switch($rows['user_blood']){   //definición de sangre del usuario
+                    case 1:
+                        $blood="A positivo (A+)";
+                        break;
+                    case 2:
+                        $blood="A negativo (A-)";
+                        break;
+                    case 3:
+                        $blood="B positivo (B+)";
+                        break;
+                    case 4:
+                        $blood="B negativo (B-)";
+                        break;
+                    case 5:
+                        $blood="AB positivo (AB+)";
+                        break;
+                    case 6:
+                        $blood="AB negativo (AB-)";
+                        break;
+                    case 7:
+                        $blood="O positivo (O+)";
+                        break;
+                    case 8:
+                        $blood="O negativo (O-)";
+                        break;
+                    default:
+                        $blood="No se registró o no sabe";
+                        break;
+                }
+
+                //definición de género
+                switch($rows['user_gender']){
+                    case 1:
+                        $genero_usuario="Masculino ";
+                        break;
+                    case 2:
+                        $genero_usuario="Femenino";
+                        break;
+                    default:
+                        $genero_usuario="No se sabe o no se identifica";
+                        break;
+                }
+
+                //Muestra adecuada de fecha y hora
+                $fecha_reg=strtotime($rows['report_dateTime']);
+                $fecha_evento=date("Y-m-d h:i:s", $fecha_reg);
 
                 if($rows['report_attendend']==0){ //comprobación de estado atendido o no.
                     echo '<tr class="has-text-centered is-light" style="background-color:#F78181;">';
                 }else{
-                    echo '<tr class="has-text-centered" >';
+                    echo '<tr class="has-text-centered is-light" >';
                 }
 
                 //impresión de los datos iniciales
                 echo '
                         <td>'.$rows['report_id'].'</td>
-                        <td>'.$rows['report_dateTime'].'</td>
+                        <td>'.$fecha_evento.'</td>
                 ';
                 if($rows['report_userType']=='0'){   //impresión de tipo VÍCTIMA
                     echo '
-                            <td>VÍCTIMA</td>
-                            <td>'.$rows['user_name'].' '.$rows['user_surname'].', '.$rows['user_gender'].', '.$rows['user_birthday'].' años, '.$rows['user_blood'].'</td>
+                            <td><strong>VÍCTIMA</strong></td>
+                            <td>'.$rows['user_name'].' '.$rows['user_surname'].', '.$genero_usuario.', '.$edad.' años, '.$blood.'</td>
                     ';
-                }else{   //impresión de tipo TESTIGO//verificación de casos posibles
-                    /*switch($rows['report_victimStatus']){
+                }else{   //impresión de tipo TESTIGO
+                    
+                    //identificación del estado de la/s victima/s
+                    switch($rows['report_victimStatus']){
                         case 1:
-                            $estado_victima="Estado GRAVE";
+                            $estado_victima="Estado: GRAVE";
                             break;
                         case 2:
-                            $estado_victima="Estado LEVE";
+                            $estado_victima="Estado: LEVE";
                             break;
-                        case 0:
-                            $estado_victima="Estado FALLECIDO";
+                        case 3:
+                            $estado_victima="Estado: FALLECIDO";
                             break;
-                        case 0:
-                            $estado_victima="Estado ILESO";
+                        case 4:
+                            $estado_victima="Estado: ILESO";
                             break;
                         default:
-                            $estado_victima="No se sabe";
+                            $estado_victima="Estado: No se sabe";
                             break;
                     }
+
+                    //identificación del caso
                     switch($rows['report_accidentTipe']){
                         case 1:
-                            $tipo_accidente="Choque";
+                            $tipo_accidente="Choque:";
                             break;
                         case 2:
                             $tipo_accidente="Vuelco";
                             break;
                         case 3:
-                            $tipo_accidente="Arrollamiento";
+                            $tipo_accidente="Arrollamiento:";
                             break;
                         case 4:
+                            $tipo_accidente="Estampida";
+                            break;
+                        case 5:
                             $tipo_accidente="Otro";
                             break;
                         default:
                             $tipo_accidente="No se sabe";
                             break;
                     }
+
+                    //identificación de choque
                     switch($rows['report_crashTipe']){
                         case 1:
                             $tipo_choque="Moto y Auto";
@@ -100,18 +156,26 @@
                             $tipo_choque="Auto y Bici";
                             break;
                         case 5:
-                            $tipo_choque="Auto y Veh.Pesado";
+                            $tipo_choque="Auto y Auto";
                             break;
                         case 6:
-                            $tipo_choque="Bici y Veh.Pesado";
+                            $tipo_choque="Auto y Veh.Pesado";
                             break;
                         case 7:
+                            $tipo_choque="Bici y Veh.Pesado";
+                            break;
+                        case 8:
+                            $tipo_choque="Más de dos vehiculos";
+                            break;
+                        case 9:
                             $tipo_choque="Otro";
                             break;
                         default:
                             $tipo_choque="No se sabe";
                             break;
                     }
+
+                    //identificación de arrollamiento
                     switch($rows['report_runOver']){
                         case 1:
                             $arrollamiento="Persona";
@@ -119,21 +183,29 @@
                         case 2:
                             $arrollamiento="Animal";
                             break;
-                        case 3:
-                            $arrollamiento="Otro";
-                            break;
                         default:
                             $arrollamiento="No se sabe";
                             break;
-                    }*/
+                    }
+
+                    //personalizar mensaje de acuerdo al caso
+                    if($tipo_accidente == "Choque:"){
+                        $caso = $tipo_accidente.' '.$tipo_choque;
+                    }elseif($tipo_accidente == "Arrollamiento:"){
+                        $caso = $tipo_accidente.' '.$arrollamiento;
+                    }else{
+                        $caso = $tipo_accidente;
+                    }
+
                     echo '
                             <td>TESTIGO</td>
-                            <td>'.$rows['report_id'].'</td>
-                    ';
+                            <td>'.$rows['report_numberVictims'].' victimas humanas, '.$estado_victima.', '.$caso.'</td>
+                            
+                    ';  //report.report_accidentTipe,report.report_crashTipe,report.report_runOver
                 }
 
                 if($rows['report_attendend']==0){ //comprobación de estado atendido o no.
-                    echo '<td>NO ATENDIDO</td>';
+                    echo '<td><strong>NO ATENDIDO</strong></td>';
                 }else{
                     echo '<td>Atendido</td>';
                 }

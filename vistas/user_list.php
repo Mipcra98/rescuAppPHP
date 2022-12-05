@@ -33,7 +33,7 @@
                 ?>
                 <tr class="has-text-centered" >
                     <td colspan="6">
-                        <a href="index.php?vista=rescuer_list" class="button is-info is-rounded is-small mt-4 mb-4">
+                        <a href="index.php?vista=user_list" class="button is-info is-rounded is-small mt-4 mb-4">
                             Haga clic acá para recargar el listado
                         </a>
                     </td>
