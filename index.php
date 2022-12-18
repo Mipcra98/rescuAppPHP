@@ -25,12 +25,11 @@
           exit();
         }
 
-
+          include "./inc/script.php";
+        
           include "./inc/navbar.php";
 
           include "./vistas/".$_GET['vista'].".php";
-          
-          include "./inc/script.php";
 
         }else{
           if($_GET['vista']=="login"){

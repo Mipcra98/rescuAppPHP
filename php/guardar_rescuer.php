@@ -14,6 +14,9 @@
      $clave_1=limpiar_cadena($_POST['usuario_clave_1']);
      $clave_2=limpiar_cadena($_POST['usuario_clave_2']);
 
+     $ci=intval($ci);
+     $tel=intval($tel);
+
      #Verificr campos obligatorios
      if($ci=="" || $nombre=="" || $apellido=="" || $mail=="" || $tel=="" || $dependency=="" || $company=="" || $role=="" || $clave_1=="" || $clave_2==""){
         echo '

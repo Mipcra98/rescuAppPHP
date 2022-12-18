@@ -100,6 +100,9 @@
     $new_clave_1=limpiar_cadena($_POST['usuario_clave_nueva_1']);
     $new_clave_2=limpiar_cadena($_POST['usuario_clave_nueva_2']);
 
+    $ci=intval($ci);
+    $tel=intval($tel);
+    
     #Verificr campos obligatorios
     if($ci=="" || $nombre=="" || $apellido=="" || $new_mail=="" || $tel=="" || $dependency=="" || $company=="" || $role==""){
         echo '

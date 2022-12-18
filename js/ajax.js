@@ -1,7 +1,10 @@
 const formularios_ajax=document.querySelectorAll(".FormularioAjax");
+console.log("iniciado ajax.js");
 
 function enviar_formulario_ajax(e){
     e.preventDefault();
+    
+    console.log("pasando preventDefault");
 
     let enviar=confirm("¿Quieres enviar el formulario?");
 
