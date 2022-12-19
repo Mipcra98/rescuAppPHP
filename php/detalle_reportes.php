@@ -159,19 +159,19 @@
                     if($datos['report_coordinates']==""){
                         $ubc="";
                         if($datos['report_avenue1']!=""){
-                            $ubc=$datos['report_avenue1'];
+                            $ubc='Avenida 1: '.$datos['report_avenue1'];
                         }
                         if($datos['report_avenue2']!=""){
-                            $ubc=$ubc.' y '.$datos['report_avenue2'];
+                            $ubc=$ubc.' y Avenida 2: '.$datos['report_avenue2'];
                         }
                         if($datos['report_street1']!=""){
-                            $ubc=$ubc.'</br>'.$datos['report_street1'];
+                            $ubc=$ubc.'</br>Calle 1: '.$datos['report_street1'];
                         }
                         if($datos['report_street2']!=""){
-                            $ubc=$ubc.' y '.$datos['report_street2'];
+                            $ubc=$ubc.' y Calle 2: '.$datos['report_street2'];
                         }
                         if($datos['report_reference']!=""){
-                            $ubc=$ubc.'</br>'.$datos['report_reference'];
+                            $ubc=$ubc.'</br>Referencia: '.$datos['report_reference'];
                         }
                         if($ubc==""){
                             echo '
@@ -196,7 +196,8 @@
                             </tr>
                         ';
                     }
-
+                    
+                    /*
                     //mensaje de "notificación", es decir, ya se notificó?
                     if($datos['report_notified']=='0'){
                         $notificado="NO notificado";
@@ -204,20 +205,23 @@
                         $notificado="Ya se notificó";
                     }
 
-                    //identificación de caso atendido o no
-                    if($datos['report_attendend']=='0'){
-                        $atendido="NO Atendido";
-                    }else{
-                        $atendido="Atendido";
-                    }
-
                     echo '
                         <tr>
                             <td>Estado de notificación</td>
                             <td>'.$notificado.'</td>
                         </tr>
-                        <tr>
-                            <td>Estado de solicitud</td>
+                        ';
+                    */
+
+                    //identificación de caso atendido o no
+                    if($datos['report_attendend']=='0'){
+                        $atendido="NO Atendido";
+                        echo '<tr style="background-color:#F78181;">';
+                    }else{
+                        echo '<tr>';
+                        $atendido="Atendido";
+                    }
+                    echo '<td>Estado de solicitud</td>
                             <td>'.$atendido.'</td>
                         </tr>
                         <tr>
@@ -260,7 +264,7 @@
                         }else{
                             echo '
                             <tr class="has-text-centered" >
-                                <td colspan="2">Se produjo un error al cargar el Rescuer Asignado</td>
+                                <td colspan="2">Aún no se asignó un Rescuer</td>
                             </tr>
                             ';
                         }

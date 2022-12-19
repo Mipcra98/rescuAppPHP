@@ -18,24 +18,19 @@
 
         if(is_file("./vistas/".$_GET['vista'].".php") && $_GET['vista']!="register" && $_GET['vista']!="login" && $_GET['vista']!="404"){
 
-        #Cierre de sesión forzada
-        if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['correo']) || $_SESSION['correo']=="")){
-              
-          include "./vistas/logout.php";
-          exit();
-        }
-
-          include "./inc/script.php";
-        
-          include "./inc/navbar.php";
-
-          include "./vistas/".$_GET['vista'].".php";
-
+              #Cierre de sesión forzada
+              if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['correo']) || $_SESSION['correo']=="")){
+                include "./vistas/logout.php";
+                exit();
+              }
+              include "./inc/script.php";
+              include "./inc/navbar.php";
+              include "./vistas/".$_GET['vista'].".php";
         }else{
           if($_GET['vista']=="login"){
             include "./vistas/login.php";
           }
-          if($_GET['vista']=="register"){
+          elseif($_GET['vista']=="register"){
             include "./vistas/rescuer_new.php";
           }else{
             include "./vistas/404.php";

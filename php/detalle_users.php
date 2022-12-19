@@ -75,7 +75,7 @@
                         echo '<td>O negativo (O-)</td>';
                         break;
                     default:
-                        echo '<td>No se registró o no sabe</td>';
+                        echo '<td>No se sabe</td>';
                         break;
                 }
                 echo'</tr>
@@ -89,7 +89,7 @@
                         echo '<td>Femenino</td>';
                         break;
                     default:
-                        echo '<td>No se registró o no sabe</td>';
+                        echo '<td>Otro</td>';
                         break;
                 }
 

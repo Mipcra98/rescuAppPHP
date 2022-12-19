@@ -9,16 +9,17 @@
 		</div>
 </div>
 <?php }else{ ?>
-<div class="container center is-fluid pb-4">
-	<h1 class="title">Rescuer</h1>
-	<h2 class="subtitle">Nuevo Rescuer</h2>
-</div>
 <div class="container">
 	
 	<div class="main-container">
 
-	<form action="./php/guardar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
-		<div class="form-rest"></div><br>
+	<form action="./php/guardar_rescuer.php" method="POST" class="FormularioAjax  box" autocomplete="off" >
+		<div class="form-rest"></div>
+		<div class="container center is-fluid pb-4">
+			<img class="logo-center" src="./img/rescuApp-Logo.png">
+			<h1 class="title has-text-centered">RescuApp</h1>
+			<h2 class="subtitle has-text-centered">Nuevo Rescuer</h2>
+		</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>C.I. del Rescuer</label>

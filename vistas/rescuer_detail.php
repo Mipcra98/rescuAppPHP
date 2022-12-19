@@ -22,35 +22,38 @@
     
     <?php
 
-        if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1']){
-            echo '
-                <div class="columns is-gapless">
-                    <p class="column is-half"></p>
-                    <p class="has-text-right pr-4 column is-one-quarter">
-                        <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button is-info is-rounded"><strong>Cambiar Estado</strong></a>
-                    </p>
-            ';
-                include "./inc/btn_volver.php";
 
-            echo '</div>';
-        }else{
-            include "./inc/btn_volver.php";
-        }
-        $check_adm=null;
-
-        if(isset($_GET['rescuer_adm'])){
-            require_once "./php/btn_rescuer_adm.php";
-        }
-
-        if(isset($_GET['rescuer_stat'])){
-            require_once "./php/btn_rescuer_stat.php";
-        }
 	
 		$mostrar_rescuer=conexion();
 		$mostrar_rescuer=$mostrar_rescuer->query("SELECT * FROM rescuer WHERE rescuer_id='$id'");
 
 		if($mostrar_rescuer->rowCount()>0){
 			$datos=$mostrar_rescuer->fetch();
+            
+            if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1']){
+
+                if(isset($_GET['rescuer_adm'])){
+                    require_once "./php/btn_rescuer_adm.php";
+                }
+        
+                if(isset($_GET['rescuer_stat'])){
+                    require_once "./php/btn_rescuer_stat.php";
+                }
+                
+                echo '
+                    <div class="columns is-gapless">
+                        <p class="column is-half"></p>
+                        <p class="has-text-right pr-4 column is-one-quarter">
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button is-info is-rounded"><strong>Cambiar Estado</strong></a>
+                        </p>
+                ';
+                include "./inc/btn_volver.php";
+    
+                echo '</div>';
+            }else{
+                include "./inc/btn_volver.php";
+            }
+            
     ?>
 
     <div class="table-container">
@@ -71,9 +74,11 @@
 	
 	<?php 
         }else{
+            include "./inc/btn_volver.php";
             include "./inc/notif_alerta.php";
         }
 		$mostrar_rescuer=null;
+        $check_adm=null;
 	?>
 
 

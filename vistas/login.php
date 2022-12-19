@@ -2,7 +2,7 @@
     <form class="box login" action="" method="POST" autocomplete="off">
 		<div class="form-rest"></div><br>
         <img class="logo-center" src="./img/rescuApp-Logo.png">
-		<h5 class="title is-5 has-text-centered is-uppercase">RescuApp</h5>
+		<h5 class="title is-5 has-text-centered">RescuApp</h5>
 
 		<div class="field">
 			<label class="label">Correo electrónico</label>

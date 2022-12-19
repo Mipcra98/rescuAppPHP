@@ -8,6 +8,7 @@
 ?>
 
 
+<script src="./js/ajax.js"></script>
 <div class="container is-fluid">
 	<h1 class="title">Rescuer</h1>
 	<h2 class="subtitle">Actualizar mi perfil</h2>
@@ -127,6 +128,7 @@
 	<?php 
 
 		}else{
+            include "./inc/btn_volver.php";
 			include "./inc/notif_alerta.php";
 		}
 		$check_rescuer=null;

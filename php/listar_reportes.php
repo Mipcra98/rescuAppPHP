@@ -61,14 +61,14 @@
                         $blood="O negativo (O-)";
                         break;
                     default:
-                        $blood="No se registró o no sabe";
+                        $blood="Sangre: No se sabe";
                         break;
                 }
 
                 //definición de género
                 switch($rows['user_gender']){
                     case 1:
-                        $genero_usuario="Masculino ";
+                        $genero_usuario="Masculino";
                         break;
                     case 2:
                         $genero_usuario="Femenino";
@@ -96,7 +96,7 @@
                 if($rows['report_userType']=='0'){   //impresión de tipo VÍCTIMA
                     echo '
                             <td><strong>VÍCTIMA</strong></td>
-                            <td>'.$rows['user_name'].' '.$rows['user_surname'].', '.$genero_usuario.', '.$edad.' años, '.$blood.'</td>
+                            <td>'.$rows['user_name'].' '.$rows['user_surname'].'__'.$genero_usuario.'__'.$edad.' años__'.$blood.'</td>
                     ';
                 }else{   //impresión de tipo TESTIGO
                     
@@ -199,7 +199,7 @@
 
                     echo '
                             <td>TESTIGO</td>
-                            <td>'.$rows['report_numberVictims'].' victimas humanas, '.$estado_victima.', '.$caso.'</td>
+                            <td>'.$rows['report_numberVictims'].' victimas__'.$estado_victima.'__'.$caso.'</td>
                             
                     ';  //report.report_accidentTipe,report.report_crashTipe,report.report_runOver
                 }

@@ -20,8 +20,7 @@
         <a class="navbar-item" href="index.php?vista=user_list">Lista de Usuarios</a>
         <a class="navbar-item" href="index.php?vista=home">Lista de Reportes</a>
         <hr class="navbar-divider">
-        <a class="navbar-item" href="index.php?vista=rescuer_new">Nuevo Rescuer</a>
-        <a class="navbar-item" href="index.php?vista=rescuer_list">Lista de Rescuer</a>
+        <a class="navbar-item" href="index.php?vista=rescuer_list">Lista de Rescuers</a>
       </div>
     </div>
     <div class="navbar-item">
