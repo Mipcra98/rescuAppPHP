@@ -1,6 +1,7 @@
 <?php
   include "./php/main.php";
-
+  date_default_timezone_set('America/Asuncion');
+  $fecha_hoy=date("Y-m-d H:i:s"); 
 //SETTINGS//
 //This code is something you set in the APP so random people cant use it.
 $SQLKEY="RescuAppLlaveWillian";
@@ -44,8 +45,38 @@ $_POST['estado_victimas']=intval($_POST['estado_victimas']);
 $_POST['tipo_accidente']=intval($_POST['tipo_accidente']);
 $_POST['tipo_choque']=intval($_POST['tipo_choque']);
 $_POST['tipo_arrollamiento']=intval($_POST['tipo_arrollamiento']);
+
+
+$_POST['key']=limpiar_cadena($_POST['key']);
+$_POST['ci']=limpiar_cadena($_POST['ci']);
+$_POST['nombre']=limpiar_cadena($_POST['nombre']);
+$_POST['apellidos']=limpiar_cadena($_POST['apellidos']);
+$_POST['telefono']=limpiar_cadena($_POST['telefono']);
+$_POST['nacimiento']=limpiar_cadena($_POST['nacimiento']);
+$_POST['correo']=limpiar_cadena($_POST['correo']);
+$_POST['genero']=limpiar_cadena($_POST['genero']);
+$_POST['sangre']=limpiar_cadena($_POST['sangre']);
+$_POST['alergias']=limpiar_cadena($_POST['alergias']);
+$_POST['medicamentos']=limpiar_cadena($_POST['medicamentos']);
+$_POST['nombre_emergencia']=limpiar_cadena($_POST['nombre_emergencia']);
+$_POST['numero_emergencia']=limpiar_cadena($_POST['numero_emergencia']);
+$_POST['chapa_moto']=limpiar_cadena($_POST['chapa_moto']);
+$_POST['chapa_auto']=limpiar_cadena($_POST['chapa_auto']);
+$_POST['chapa_otro']=limpiar_cadena($_POST['chapa_otro']);
+$_POST['cantidad_victimas']=limpiar_cadena($_POST['cantidad_victimas']);
+$_POST['estado_victimas']=limpiar_cadena($_POST['estado_victimas']);
+$_POST['tipo_accidente']=limpiar_cadena($_POST['tipo_accidente']);
+$_POST['tipo_choque']=limpiar_cadena($_POST['tipo_choque']);
+$_POST['tipo_arrollamiento']=limpiar_cadena($_POST['tipo_arrollamiento']);
+$_POST['coordenadas']=limpiar_cadena($_POST['coordenadas']);
+$_POST['avenida1']=limpiar_cadena($_POST['avenida1']);
+$_POST['avenida2']=limpiar_cadena($_POST['avenida2']);
+$_POST['calle1']=limpiar_cadena($_POST['calle1']);
+$_POST['calle2']=limpiar_cadena($_POST['calle2']);
+$_POST['referencia']=limpiar_cadena($_POST['referencia']);
+
 /** 
-  * * Otras variables que pueden estár interesantes para los reportes
+  * * Otras variables que están en los reportes
   $_POST['coordenadas']
   $_POST['avenida1']
   $_POST['avenida2']
@@ -127,6 +158,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
   }
   
   $marcadores_reporte=[
+    ":fecha"=>$fecha_hoy,
     ":cantidad_victimas"=>$_POST['cantidad_victimas'],
     ":estado_victimas"=>$_POST['estado_victimas'],
     ":tipo_accidente"=>$_POST['tipo_accidente'],
@@ -150,7 +182,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
       //Sentencia SQL en variable para poder modificar
     $report_query="INSERT INTO report (report_dateTime,report_numberVictims,report_accidentTipe,report_crashTipe,report_runOver,report_victimStatus,
     report_coordinates,report_avenue1,report_avenue2,report_street1,report_street2,report_reference,report_userId,report_userType) 
-    VALUES (NOW(),:cantidad_victimas,:tipo_accidente,:tipo_choque,:tipo_arrollamiento,:estado_victimas,:coordenadas,:avenida1,:avenida2,:calle1,:calle2,:referencia,'".$usuario['user_id']."',:tipo_reporte)";
+    VALUES (:fecha,:cantidad_victimas,:tipo_accidente,:tipo_choque,:tipo_arrollamiento,:estado_victimas,:coordenadas,:avenida1,:avenida2,:calle1,:calle2,:referencia,'".$usuario['user_id']."',:tipo_reporte)";
     
     $guardar_reporte=$guardar_reporte->prepare($report_query);
     $guardar_reporte->execute($marcadores_reporte);

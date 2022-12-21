@@ -7,8 +7,6 @@
 
 ?>
 
-
-<script src="./js/ajax.js"></script>
 <div class="container is-fluid">
 	<h1 class="title">Rescuer</h1>
 	<h2 class="subtitle">Actualizar mi perfil</h2>
@@ -29,9 +27,8 @@
 
 	?>
 
-	<div class="main-container">
+	<div class="main-container box">
 		<form action="./php/actualizar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
-		<div class="form-rest"></div><br>
 			<input type="hidden" value="<?php echo $datos['rescuer_id']; ?>" name="rescuer_id" required >
 			<div class="columns">
 				<div class="column">
@@ -43,7 +40,7 @@
 				<div class="column">
 					<div class="control">
 						<label>Nombre</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_name']; ?>" name="rescuer_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_name']; ?>" name="rescuer_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}" maxlength="40" required >
 					</div>
 				</div>
 			</div>
@@ -51,7 +48,7 @@
 				<div class="column">
 					<div class="control">
 						<label>Apellidos</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_surname']; ?>" name="rescuer_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_surname']; ?>" name="rescuer_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}" maxlength="40" required >
 					</div>
 				</div>
 				<div class="column">
@@ -71,7 +68,7 @@
 				<div class="column">
 					<div class="control">
 						<label>Dependencia</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_dependency']; ?>" name="rescuer_dependencia" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_dependency']; ?>" name="rescuer_dependencia" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
 					</div>
 				</div>
 			</div>
@@ -79,13 +76,13 @@
 				<div class="column">
 					<div class="control">
 						<label>Compañía</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_company']; ?>" name="rescuer_compania" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_company']; ?>" name="rescuer_compania" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
 					</div>
 				</div>
 				<div class="column">
 					<div class="control">
 						<label>Rol en la dependencia</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_role']; ?>" name="rescuer_rol" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_role']; ?>" name="rescuer_rol" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
 					</div>
 				</div>
 			</div><br><br>
@@ -119,6 +116,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-rest"></div><br><br>
 			<p class="has-text-centered">
 				<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Actualizar</button>
 			</p>

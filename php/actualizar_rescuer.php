@@ -125,7 +125,7 @@
         exit();
      }  
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
+     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}",$nombre)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -135,7 +135,7 @@
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$apellido)){
+     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}",$apellido)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -145,7 +145,7 @@
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}",$dependency)){
+     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$dependency)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -155,7 +155,7 @@
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}",$company)){
+     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$company)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -165,7 +165,7 @@
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,70}",$role)){
+     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$role)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>

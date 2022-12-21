@@ -212,7 +212,7 @@
 
                 echo '
                         <td>
-                            <a href="index.php?vista=report_detail&report_id_deta='.$rows['report_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
+                            <a href="index.php?vista=report_detail&report_id_deta='.$rows['report_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000">Ver a detalle</a>
                         </td>
                     </tr>
                 ';

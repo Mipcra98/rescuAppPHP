@@ -1,10 +1,8 @@
-
 <div class="container pr-6 pl-6 pb-6">
 <?php
 	require_once "./php/main.php";
     
-
-	$id_det=isset($_GET['report_id_deta']) ? $_GET['report_id_deta'] : 0 ;
+    $id_det=isset($_GET['report_id_deta']) ? $_GET['report_id_deta'] : 0 ;
 	$id_det=limpiar_cadena($id_det);
 
     //verificar datos del reporte para personalizar mensaje
@@ -35,6 +33,10 @@
                 require_once "./php/btn_report_stat.php";
             }
 
+            /*if(isset($_GET['report_map'])){
+                include "./php/report_map.php";
+            }*/
+
             if($datos['report_attendend']==0 && !isset($_GET['report_stat'])){
 
                 echo '
@@ -60,13 +62,13 @@
 
             include "./php/detalle_reportes.php";
     ?>
-
-    <div class="table-container">
+    <div class="table-container box">
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr class="has-text-centered">
                     <th>Nombre del campo</th>
                     <th>Valor del campo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +78,6 @@
             </tbody>
         </table>
     </div>
-	
 	<?php 
         }else{
             include "./inc/btn_volver.php";

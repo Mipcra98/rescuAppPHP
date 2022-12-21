@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <?php
-      include "./inc/head.php";
-    ?>
+      <link rel="icon" href="./img/Logo.ico">
+      <?php
+        include "./inc/head.php";
+      ?>
   </head>
   <body>
     <?php
@@ -23,15 +24,18 @@
                 include "./vistas/logout.php";
                 exit();
               }
-              include "./inc/script.php";
               include "./inc/navbar.php";
+
               include "./vistas/".$_GET['vista'].".php";
+
+              include "./inc/script.php";
         }else{
           if($_GET['vista']=="login"){
             include "./vistas/login.php";
           }
           elseif($_GET['vista']=="register"){
             include "./vistas/rescuer_new.php";
+            include "./inc/script.php";
           }else{
             include "./vistas/404.php";
           }

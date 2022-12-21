@@ -26,8 +26,8 @@
         include "./inc/btn_volver.php";
     ?>
 
-    <div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <div class="table-container box">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr class="has-text-centered">
                     <th>Nombre del campo</th>

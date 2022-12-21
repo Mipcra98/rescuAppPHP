@@ -106,23 +106,26 @@
                         $arrollamiento="No se sabe";
                         break;
                 }
-
                     echo '
                         <tr>
                             <td>ID del reporte</td>
                             <td>'.$datos['report_id'].'</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Fecha de creación</td>
                             <td>'.$datos['report_dateTime'].'</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Cantidad de víctimas</td>
                             <td>'.$datos['report_numberVictims'].'</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Tipo de Accidente</td>
                             <td>'.$tipo_accidente.'</td>
+                            <td></td>
                         </tr>
                     ';
 
@@ -131,6 +134,7 @@
                             <tr>
                                 <td>Tipo de Choque</td>
                                 <td>Ocasionado entre '.$tipo_choque.'</td>
+                                <td></td>
                             </tr>
                         ';
                     }elseif($tipo_accidente=="Arrollamiento"){
@@ -138,6 +142,7 @@
                             <tr>
                                 <td>Tipo de Arrollamiento</td>
                                 <td>'.$arrollamiento.'</td>
+                                <td></td>
                             </tr>
                         ';
                     }else{
@@ -145,6 +150,7 @@
                             <tr>
                                 <td>Tipo de Choque</td>
                                 <td>'.$tipo_choque.'</td>
+                                <td></td>
                             </tr>
                         ';
                     }
@@ -152,6 +158,7 @@
                         <tr>
                             <td>Esstádo de la o lás victimas</td>
                             <td>'.$estado_victima.'</td>
+                            <td></td>
                         </tr>
                     ';
 
@@ -178,6 +185,7 @@
                                 <tr>
                                     <td>Ubicación</td>
                                     <td>No se registró ninguna ubicación</td>
+                                    <td></td>
                                 </tr>
                             ';
                         }else{
@@ -185,6 +193,7 @@
                                 <tr>
                                     <td>Ubicación</td>
                                     <td>'.$ubc.'</td>
+                                    <td></td>
                                 </tr>
                             ';
                         }
@@ -192,26 +201,12 @@
                         echo '
                             <tr>
                                 <td>Ubicación</td>
-                                <td>'.$datos['report_coordinates'].'</td>
+                                <td><p class="pr-6">'.$datos['report_coordinates'].'</p></td>';
+                            echo'<td><a href="https://www.google.es/maps/place/'.$datos['report_coordinates'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;width: 8vw;" target="_blank">Ver Mapa</a> 
+                                </td>
                             </tr>
                         ';
                     }
-                    
-                    /*
-                    //mensaje de "notificación", es decir, ya se notificó?
-                    if($datos['report_notified']=='0'){
-                        $notificado="NO notificado";
-                    }else{
-                        $notificado="Ya se notificó";
-                    }
-
-                    echo '
-                        <tr>
-                            <td>Estado de notificación</td>
-                            <td>'.$notificado.'</td>
-                        </tr>
-                        ';
-                    */
 
                     //identificación de caso atendido o no
                     if($datos['report_attendend']=='0'){
@@ -223,13 +218,13 @@
                     }
                     echo '<td>Estado de solicitud</td>
                             <td>'.$atendido.'</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Usuario que reportó</td>
                             <td>
-                                <p class="pr-6">'.ucwords($datos['user_name']).' '.ucwords($datos['user_surname']).'   </p>
-                                <a href="index.php?vista=user_detail&user_id_deta='.$datos['user_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
-                            </td>
+                                <p>'.ucwords($datos['user_name']).' '.ucwords($datos['user_surname']).'   </p></td>
+                            <td><a href="index.php?vista=user_detail&user_id_deta='.$datos['user_id'].'" class="button is-rounded is-small has-text-centered" style="background-color:#FF8000;border-color:#000000;width: 8vw;">Ver a detalle</a></td>
                         </tr>
                     ';
 
@@ -243,6 +238,7 @@
                         <tr>
                             <td>El usuario reportó como</td>
                             <td>'.$tipo_user.'</td>
+                            <td></td>
                         </tr>
                     ';
 
@@ -255,16 +251,14 @@
                             echo '
                             <tr>
                                 <td>Rescuer que atendió el caso</td>
-                                <td>
-                                    <p class="pr-6">'.ucwords($datos['rescuer_name']).' '.ucwords($datos['rescuer_surname']).'   </p>
-                                    <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
-                                </td>
+                                <td><p class="pr-6">'.ucwords($datos['rescuer_name']).' '.ucwords($datos['rescuer_surname']).'   </p></td>
+                                <td><a id="view_map" href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'" class="button is-rounded is-small has-text-centered" style="background-color:#FF8000;border-color:#000000;width: 8vw;">Ver a detalle</a></td>
                             </tr>
                             ';
                         }else{
                             echo '
                             <tr class="has-text-centered" >
-                                <td colspan="2">Aún no se asignó un Rescuer</td>
+                                <td colspan="3">Aún no se asignó un Rescuer</td>
                             </tr>
                             ';
                         }
@@ -273,6 +267,7 @@
                         echo '
                             <tr>
                                 <td>Rescuer que atendió el caso</td>
+                                <td>Aún no se asignó un rescuer</td>
                                 <td>Aún no se asignó un rescuer</td>
                             </tr>
                         ';

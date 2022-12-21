@@ -1,4 +1,4 @@
-const formularios_ajax=document.querySelectorAll(".FormularioAjax");
+let formularios_ajax=document.querySelectorAll(".FormularioAjax");
 console.log("iniciado ajax.js");
 
 function enviar_formulario_ajax(e){
@@ -37,3 +37,4 @@ function enviar_formulario_ajax(e){
 formularios_ajax.forEach(formularios => {
     formularios.addEventListener("submit",enviar_formulario_ajax);
 });
+

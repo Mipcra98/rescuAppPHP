@@ -13,13 +13,13 @@
 
 
 ?>
+
+
+<div class="container pr-6 pl-6 pb-6">
 <div class="container is-fluid">
     <h1 class="title">Rescuer</h1>
     <h2 class="subtitle">Detalle del Rescuer</h2>
-</div>
-
-<div class="container pr-6 pl-6 pb-6">
-    
+</div>    
     <?php
 
 
@@ -44,7 +44,7 @@
                     <div class="columns is-gapless">
                         <p class="column is-half"></p>
                         <p class="has-text-right pr-4 column is-one-quarter">
-                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button is-info is-rounded"><strong>Cambiar Estado</strong></a>
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button is-success is-rounded"><strong>Cambiar Estado</strong></a>
                         </p>
                 ';
                 include "./inc/btn_volver.php";
@@ -56,12 +56,13 @@
             
     ?>
 
-    <div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <div class="table-container box">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr class="has-text-centered">
                     <th>Nombre del campo</th>
                     <th>Valor del campo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

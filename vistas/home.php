@@ -1,18 +1,18 @@
+
+
+<div class="container pr-6 pl-6 pb-6">
 <div class="container is-fluid pb-4">
     <h1 class="title">Página Principal</h1>
     <h2 class="subtitle">Lista de Reportes</h2>
 </div>
-
-<div class="container pr-6 pl-6">
-
     <?php 
         require_once "./php/main.php";
 
         require_once "./php/listar_reportes.php";
     ?>
 
-    <div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <div class="table-container box">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr class="has-text-centered">
                     <th>ID</th>
