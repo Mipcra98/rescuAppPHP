@@ -102,16 +102,16 @@
                     
                     //identificación del estado de la/s victima/s
                     switch($rows['report_victimStatus']){
-                        case 1:
+                        case 2:
                             $estado_victima="Estado: GRAVE";
                             break;
-                        case 2:
+                        case 3:
                             $estado_victima="Estado: LEVE";
                             break;
-                        case 3:
+                        case 4:
                             $estado_victima="Estado: FALLECIDO";
                             break;
-                        case 4:
+                        case 5:
                             $estado_victima="Estado: ILESO";
                             break;
                         default:
@@ -121,19 +121,19 @@
 
                     //identificación del caso
                     switch($rows['report_accidentTipe']){
-                        case 1:
+                        case 2:
                             $tipo_accidente="Choque:";
                             break;
-                        case 2:
+                        case 3:
                             $tipo_accidente="Vuelco";
                             break;
-                        case 3:
+                        case 4:
                             $tipo_accidente="Arrollamiento:";
                             break;
-                        case 4:
+                        case 5:
                             $tipo_accidente="Estampida";
                             break;
-                        case 5:
+                        case 6:
                             $tipo_accidente="Otro";
                             break;
                         default:
@@ -143,31 +143,31 @@
 
                     //identificación de choque
                     switch($rows['report_crashTipe']){
-                        case 1:
+                        case 2:
                             $tipo_choque="Moto y Auto";
                             break;
-                        case 2:
+                        case 3:
                             $tipo_choque="Moto y Bici";
                             break;
-                        case 3:
+                        case 4:
                             $tipo_choque="Moto y Veh.Pesado";
                             break;
-                        case 4:
+                        case 5:
                             $tipo_choque="Auto y Bici";
                             break;
-                        case 5:
+                        case 6:
                             $tipo_choque="Auto y Auto";
                             break;
-                        case 6:
+                        case 7:
                             $tipo_choque="Auto y Veh.Pesado";
                             break;
-                        case 7:
+                        case 8:
                             $tipo_choque="Bici y Veh.Pesado";
                             break;
-                        case 8:
+                        case 9:
                             $tipo_choque="Más de dos vehiculos";
                             break;
-                        case 9:
+                        case 10:
                             $tipo_choque="Otro";
                             break;
                         default:
@@ -177,10 +177,10 @@
 
                     //identificación de arrollamiento
                     switch($rows['report_runOver']){
-                        case 1:
+                        case 2:
                             $arrollamiento="Persona";
                             break;
-                        case 2:
+                        case 3:
                             $arrollamiento="Animal";
                             break;
                         default:
