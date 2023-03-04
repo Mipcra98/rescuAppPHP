@@ -97,7 +97,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
 
   if($_POST['key']==$SQLKEY){
     $comprobar_usuario=conexion();
-    $comprobar_usuario=$comprobar_usuario->query("SELECT user_id,user_ci,user_mail FROM user WHERE user_ci='".$_POST['ci']."' AND user_mail='".$_POST['correo']."'");
+    $comprobar_usuario=$comprobar_usuario->query("SELECT * FROM user WHERE user_ci='".$_POST['ci']."' AND user_mail='".$_POST['correo']."'");
 
     $marcadores=[
       ":ci"=>$_POST['ci'],
@@ -119,38 +119,44 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
     
 
     $guardar_usuario=conexion();
-    //$guardar_huella=conexión();
+    //$guardar_huella=conexion();
 
-    if($comprobar_usuario->rowCount()>'0'){
+    if($comprobar_usuario->rowCount()>0){
       $datos=$comprobar_usuario->fetch();
-      echo '\nEntra al update!';
-      $guardar_usuario=$guardar_usuario->prepare("UPDATE user SET user_ci=:ci,user_name=:nombre,user_surname=:apellidos,
-      user_phone=:telefono,user_birthday=STR_TO_DATE(:nacimiento ,'%d/%m/%Y'),user_mail=:correo,user_blood=:sangre,
-      user_gender=:genero,user_medsInUse=:medicamentos,user_allergies=:alergias,
-      user_nameSurnameEmergency=:nombre_emergencia,user_phoneEmergency=:numero_emergencia,
-      user_motorbikeSheet=:chapa_moto,user_carSheet=:chapa_auto,user_otherSheet=:chapa_otro WHERE user_id='".$datos['user_id']."'");
-      
-      $guardar_usuario->execute($marcadores);
-      
-      /**
-      //Guardar datos para la huella de auditoría
-      $huella="El usuario con ID: ".$datos['user_id']." ha actualizado sus datos a los siguientes= C.I.: ".$_POST['ci'].", Nombre: ".ucwords($_POST['nombre']).
-      ", Apellidos: ".ucwords($_POST['apellidos']).", Teléfono: ".$_POST['telefono'].", Fecha de nacimiento: ".$_POST['nacimiento'].", Correo: ".$_POST['correo'].
-      ", Tipo de sangre: ".$_POST['sangre'].", Género: ".$_POST['genero'].", Medicamentos en uso: ".$_POST['medicamentos'].", Alergias: ".$_POST['alergias'].
-      ", Nombre del contacto de Emergencia: ".$_POST['nombre_emergencia'].", Número del contacto de emergencia: ".$_POST['numero_emergencia'].
-      ", Nro. de Chama Moto: ".$_POST['chapa_moto'].", Nro. de Chama Auto: ".$_POST['chapa_auto'].", Nro. de Chama Otro: ".$_POST['chapa_otro'];
+      if ($datos['user_name']!=$_POST['nombre'] || $datos['user_surname']!=$_POST['apellidos'] || $datos['user_phone']!=$_POST['telefono'] || $datos['user_blood']!=$_POST['sangre'] || $datos['user_gender']!=$_POST['genero'] || $datos['user_medsInUse']!=$_POST['medicamentos'] || $datos['user_allergies']!=$_POST['alergias'] || $datos['user_nameSurnameEmergency']!=$_POST['nombre_emergencia'] || $datos['user_phoneEmergency']!=$_POST['numero_emergencia'] || $datos['user_motorbikeSheet']!=$_POST['chapa_moto'] || $datos['user_carSheet']!=$_POST['chapa_auto'] || $datos['user_otherSheet']!=$_POST['chapa_otro']){ //  || $datos['user_birthday']!=$_POST['nacimiento']
 
-      $tipo="Usuarios";
+        echo '\nEntra al update!';
+        $guardar_usuario=$guardar_usuario->prepare("UPDATE user SET user_ci=:ci,user_name=:nombre,user_surname=:apellidos,
+        user_phone=:telefono,user_birthday=STR_TO_DATE(:nacimiento ,'%d/%m/%Y'),user_mail=:correo,user_blood=:sangre,
+        user_gender=:genero,user_medsInUse=:medicamentos,user_allergies=:alergias,
+        user_nameSurnameEmergency=:nombre_emergencia,user_phoneEmergency=:numero_emergencia,
+        user_motorbikeSheet=:chapa_moto,user_carSheet=:chapa_auto,user_otherSheet=:chapa_otro WHERE user_id='".$datos['user_id']."'");
+        
+        $guardar_huella=conexion();
+        //Guardar datos para la huella de auditoría //
+        
+        $huella="El usuario con ID: ".$datos['user_id']." ha actualizado sus datos: ".$_POST['ci'].", ".ucwords($_POST['nombre'])." ".ucwords($_POST['apellidos']).", ".$_POST['telefono'].", ".$_POST['nacimiento'].", ".$_POST['correo'].", ".$_POST['sangre'].", ".$_POST['genero'].", ".$_POST['medicamentos'].", ".$_POST['alergias'].", ".$_POST['nombre_emergencia'].", ".$_POST['numero_emergencia'].", ".$_POST['chapa_moto'].", ".$_POST['chapa_auto'].", ".$_POST['chapa_otro'];
+        
+        $tipo="Usuarios";
 
-      $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
-      ($fecha_hoy,$huella,$tipo)");
+        $marc_audit=[
+          ":fecha"=>$fecha_hoy,
+          ":huella"=>$huella,
+          ":afecta"=>$tipo,
+        ];
+        $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+        (:fecha,:huella,:afecta)");
 
-      
-      $guardar_huella->execute();
-      $guardar_huella=null;*/
+        
+        $guardar_huella->execute($marc_audit);
+        $guardar_huella=null;
 
+        $guardar_usuario->execute($marcadores);
+      }else{
+        echo '\n Se creó un reporte, pero sin actualizar el usuario!';
+      }
     }else{
-      echo '\nEntra al new!';
+      echo '\n Entra al new!';
       $guardar_usuario=$guardar_usuario->prepare("INSERT INTO user(user_ci,user_name,user_surname,user_phone,user_birthday,
       user_mail,user_blood,user_gender,user_medsInUse,user_allergies,user_nameSurnameEmergency,
       user_phoneEmergency,user_motorbikeSheet,user_carSheet,user_otherSheet) VALUES (:ci,:nombre,:apellidos,:telefono,
@@ -158,28 +164,29 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
       :numero_emergencia,:chapa_moto,:chapa_auto,:chapa_otro)");
 
       $guardar_usuario->execute($marcadores);
-      /**
-      $comprobar_nuevo=conexion();
-      $comprobar_nuevo=$comprobar_nuevo->query("SELECT user_id,user_ci,user_mail FROM user WHERE user_ci='".$_POST['ci']."' AND user_mail='".$_POST['correo']."'");
-
-      $datos_nuevo=$comprobar_nuevo->fetch();
       
-      //Guardar datos para la huella de auditoría
-      $huella="Se creó un usuario Nuevo con ID: ".$datos_nuevo['user_id']." además de los siguientes datos= C.I.: ".$_POST['ci'].", Nombre: ".ucwords($_POST['nombre']).
-      ", Apellidos: ".ucwords($_POST['apellidos']).", Teléfono: ".$_POST['telefono'].", Fecha de nacimiento: ".$_POST['nacimiento'].", Correo: ".$_POST['correo'].
-      ", Tipo de sangre: ".$_POST['sangre'].", Género: ".$_POST['genero'].", Medicamentos en uso: ".$_POST['medicamentos'].", Alergias: ".$_POST['alergias'].
-      ", Nombre del contacto de Emergencia: ".$_POST['nombre_emergencia'].", Número del contacto de emergencia: ".$_POST['numero_emergencia'].
-      ", Nro. de Chama Moto: ".$_POST['chapa_moto'].", Nro. de Chama Auto: ".$_POST['chapa_auto'].", Nro. de Chama Otro: ".$_POST['chapa_otro'];
+      $comprobar_nuevo=conexion();
+      $comprobar_nuevo=$comprobar_nuevo->query("SELECT user_id FROM user WHERE user_ci='".$_POST['ci']."' AND user_mail='".$_POST['correo']."'");
 
-      $tipo="Usuarios";
+        $datos_nuevo=$comprobar_nuevo->fetch();
+        
+        //Guardar datos para la huella de auditoría
+        $huella="Se creó un usuario Nuevo con ID:".$datos_nuevo['user_id']." con los siguientes datos: ".$_POST['ci'].", ".ucwords($_POST['nombre'])." ".ucwords($_POST['apellidos']).", ".$_POST['telefono'].", ".$_POST['nacimiento'].", ".$_POST['correo'].", ".$_POST['sangre'].", ".$_POST['genero'].", ".$_POST['medicamentos'].", ".$_POST['alergias'].", ".$_POST['nombre_emergencia'].", ".$_POST['numero_emergencia'].", ".$_POST['chapa_moto'].", ".$_POST['chapa_auto'].", ".$_POST['chapa_otro'];
 
-      $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
-      ($fecha_hoy,$huella,$tipo)");
+        $tipo="Usuarios";
 
-      $guardar_huella->execute();
-      $guardar_huella=null;
-      $comprobar_nuevo=null;
-      */
+        $marc_audit=[
+          ":fecha"=>$fecha_hoy,
+          ":huella"=>$huella,
+          ":afecta"=>$tipo,
+        ];
+        $guardar_huella=conexion();
+        $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+        (:fecha,:huella,:afecta)");
+
+        $guardar_huella->execute($marc_audit);
+        $guardar_huella=null;
+        $comprobar_nuevo=null;
     }
   
 
@@ -233,29 +240,63 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
     $guardar_reporte->execute($marcadores_reporte);
     $guardar_reporte=null;
 
-    /**
-    $ultimo_reporte=conexion();
-    $ultimo_reporte=$ultimo_reporte->query("SELECT report.report_id,user.user_id,user.user_name,user.user_surname FROM report INNER JOIN user ON report.report_userId=user.user_id WHERE report.report_dateTime=$fecha_hoy");
+    $obtener_reporte=conexion();
+    $obtener_reporte=$obtener_reporte->query("SELECT max(report_id) FROM report");
+    if($obtener_reporte->rowCount()>0){
+      $id_ultimo=$obtener_reporte->fetch();
+      echo $id_ultimo[0];
+      $datos_reporte=conexion();
+      $datos_reporte=$datos_reporte->query("SELECT report.*,user.* FROM report INNER JOIN user ON report.report_userId=user.user_id WHERE report_id = $id_ultimo[0]");
+      if($datos_reporte->rowCount()>0){
+        $ultimo_reporte=$datos_reporte->fetch();
+        $huella="Se creó un nuevo reporte de ID: ".$ultimo_reporte['report_id']." por parte del usuario ".ucwords($ultimo_reporte['user_name'])." ".ucwords($ultimo_reporte['user_surname'])." con user_id: ".$ultimo_reporte['user_id'].", para ver más detalles vea el reporte de id: ".$ultimo_reporte['report_id'];
 
-    $datos_reporte=$ultimo_reporte->fetch();
+      $tipo="Reportes";
+
+      $marc_audit=[
+        ":fecha"=>$fecha_hoy,
+        ":huella"=>$huella,
+        ":afecta"=>$tipo,
+      ];
+
+      $guar_huella=conexion();
+      $guar_huella=$guar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+      (:fecha,:huella,:afecta)");
+
+      $guar_huella->execute($marc_audit);
+
       
-    //Guardar datos para la huella de auditoría de reportes
-    $huella="Se creó un nuevo reporte de ID: ".$datos_reporte['report_id']." por parte del usuario ".ucwords($datos_reporte['user_name'])." ".ucwords($datos_reporte['user_surname'])." con user_id: ".$datos_reporte['user_id'].", para ver más detalles vea el reporte de id: ".$datos_reporte['report_id'];
+      $guar_huella=null;
+      $ultimo_reporte=null;
+      $obtener_reporte=null;
+      }
+    }
 
-    $tipo="Reportes";
+    /** 
+    $ultimo_reporte=conexion();
+    $ultimo_reporte=$ultimo_reporte->query("SELECT report_id FROM report WHERE report_dateTime = $fecha_hoy");
+      $datos_reporte=$ultimo_reporte->fetch();
+        
+      //Guardar datos para la huella de auditoría de reportes
+      $huella="Se creó un nuevo reporte de ID: ".$datos_reporte['report_id'];//." por parte del usuario ".ucwords($datos_reporte['user_name'])." ".ucwords($datos_reporte['user_surname'])." con user_id: ".$datos_reporte['user_id'].", para ver más detalles vea el reporte de id: ".$datos_reporte['report_id'];
 
-    $guar_huella=$guar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
-    ($fecha_hoy,$huella,$tipo)");
+      $tipo="Reportes";
 
-    $guar_huella->execute();
+      $marc_audit=[
+        ":fecha"=>$fecha_hoy,
+        ":huella"=>$huella,
+        ":afecta"=>$tipo,
+      ];
 
-    
-    $guar_huella=null;
-    $ultimo_reporte=null;
-    */
+      $guar_huella=$guar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+      (:fecha,:huella,:afecta)");
 
+      $guar_huella->execute($marc_audit);
 
-
+      
+      $guar_huella=null;
+      $ultimo_reporte=null;
+      */
   }
   $existe_usuario=null;
 

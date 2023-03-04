@@ -80,7 +80,7 @@
 
                 //Muestra adecuada de fecha y hora
                 $fecha_reg=strtotime($rows['report_dateTime']);
-                $fecha_evento=date("Y-m-d h:i:s", $fecha_reg);
+                $fecha_evento=date("Y-m-d H:i:s", $fecha_reg);
 
                 if($rows['report_attendend']==0){ //comprobación de estado atendido o no.
                     echo '<tr class="has-text-centered is-light" style="background-color:#F78181;">';

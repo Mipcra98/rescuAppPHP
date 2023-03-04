@@ -1,4 +1,3 @@
-
 <?php
     #Conexión a la BD
     function conexion(){
