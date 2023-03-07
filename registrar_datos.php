@@ -140,7 +140,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
         $tipo="Usuarios";
 
         $marc_audit=[
-          ":fecha"=>$fecha_hoy,
+          ":fecha"=>fecha_ahora(),
           ":huella"=>$huella,
           ":afecta"=>$tipo,
         ];
@@ -176,7 +176,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
         $tipo="Usuarios";
 
         $marc_audit=[
-          ":fecha"=>$fecha_hoy,
+          ":fecha"=>fecha_ahora(),
           ":huella"=>$huella,
           ":afecta"=>$tipo,
         ];
@@ -244,7 +244,6 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
     $obtener_reporte=$obtener_reporte->query("SELECT max(report_id) FROM report");
     if($obtener_reporte->rowCount()>0){
       $id_ultimo=$obtener_reporte->fetch();
-      echo $id_ultimo[0];
       $datos_reporte=conexion();
       $datos_reporte=$datos_reporte->query("SELECT report.*,user.* FROM report INNER JOIN user ON report.report_userId=user.user_id WHERE report_id = $id_ultimo[0]");
       if($datos_reporte->rowCount()>0){
@@ -254,7 +253,7 @@ if( isset($_POST['key']) && isset($_POST['ci']) && isset($_POST['nombre']) && is
       $tipo="Reportes";
 
       $marc_audit=[
-        ":fecha"=>$fecha_hoy,
+        ":fecha"=>fecha_ahora(),
         ":huella"=>$huella,
         ":afecta"=>$tipo,
       ];

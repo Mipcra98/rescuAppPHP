@@ -45,7 +45,12 @@
         return $cadena;
     }
     
-    
+    function fecha_ahora(){
+        date_default_timezone_set('America/Asuncion');
+        $fecha=date("Y-m-d H:i:s"); 
+        return $fecha;
+    }
+
     /*
     Insertar usuario
     $pdo->query("INSERT INTO user(user_ci,user_name,user_surname,user_phone,user_birthday,

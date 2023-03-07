@@ -21,6 +21,22 @@
 
 				$rescu_id=intval($check_adm['rescuer_id']);
 				$cambiar_state->execute([":stat"=>'1',":rescu_id"=>$rescu_id]);
+				
+				$huella="Se atendió un reporte de ID: ".$id_state." por parte del rescuer ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido'])." con rescuer_id: ".$_SESSION['id'].", para ver más detalles vea el reporte de id: ".$id_state;
+
+				$tipo="Reportes";
+
+				$marc_audit=[
+				  ":fecha"=>fecha_ahora(),
+				  ":huella"=>$huella,
+				  ":afecta"=>$tipo,
+				];
+				$guardar_huella=conexion();
+				$guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+				(:fecha,:huella,:afecta)");
+		
+				$guardar_huella->execute($marc_audit);
+				$guardar_huella=null;
 
 				if($cambiar_state->rowCount()==1){
 					echo '

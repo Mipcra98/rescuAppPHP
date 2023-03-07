@@ -123,6 +123,19 @@
             </div>
         ';
         exit();
+    }else{
+        $check_ci=conexion();
+        $check_ci=$check_ci->query("SELECT rescuer_ci FROM rescuer WHERE rescuer_ci='$ci'");
+        if($check_ci->rowCount()>0){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong>¡Ocurrió un error inesperado!</strong><br>
+                    <a>El "C.I." ya está en uso, por favor elija otro</a>
+                </div>
+            ';
+            exit();
+        }
+        $check_mail=null;
      }  
 
      if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}",$nombre)){
@@ -269,6 +282,30 @@
                <a>El usuario se actualizó exitosamente</a>
            </div>
        ';
+       $_SESSION['ci']=$ci;
+       $_SESSION['nombre']=$nombre;
+       $_SESSION['apellido']=$apellido;
+       $_SESSION['correo']=$new_mail;
+       $_SESSION['telefono']=$tel;
+       $_SESSION['dependencia']=$dependency;
+       $_SESSION['compania']=$company;
+       $_SESSION['rol']=$role;
+
+       $huella="Se actualizó el rescuer con ID:".$_SESSION['id']." con los siguientes datos: ".$_SESSION['ci'].", ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido']).", ".$_SESSION['correo'].", ".$_SESSION['telefono'].", ".$_SESSION['dependencia'].", ".$_SESSION['compania'].", ".$_SESSION['rol'];
+
+        $tipo="Rescuers";
+
+        $marc_audit=[
+          ":fecha"=>fecha_ahora(),
+          ":huella"=>$huella,
+          ":afecta"=>$tipo,
+        ];
+        $guardar_huella=conexion();
+        $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+        (:fecha,:huella,:afecta)");
+
+        $guardar_huella->execute($marc_audit);
+        $guardar_huella=null;
     }else{
        echo '
            <div class="notification is-danger is-light">

@@ -37,6 +37,19 @@
             </div>
         ';
         exit();
+     }else{
+        $check_ci=conexion();
+        $check_ci=$check_ci->query("SELECT rescuer_ci FROM rescuer WHERE rescuer_ci='$ci'");
+        if($check_ci->rowCount()>0){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong>¡Ocurrió un error inesperado!</strong><br>
+                    <a>El "C.I." ya está en uso, por favor elija otro</a>
+                </div>
+            ';
+            exit();
+        }
+        $check_mail=null;
      }
 
      #Verificar integridad de datos
@@ -157,8 +170,8 @@
      #Guardar datos a la BD
      $guardar_rescuer=conexion();
      $guardar_rescuer=$guardar_rescuer->prepare("INSERT INTO rescuer(rescuer_ci,rescuer_pass,rescuer_name,rescuer_surname,
-     rescuer_mail,rescuer_dependency,rescuer_company,rescuer_role,rescuer_phone) VALUES(:ci,
-     :clave_encriptada,:nombre,:apellido,:mail,:dependency,:company,:role,:phone)");
+     rescuer_mail,rescuer_dependency,rescuer_company,rescuer_role,rescuer_phone,rescuer_admin,rescuer_state) VALUES(:ci,
+     :clave_encriptada,:nombre,:apellido,:mail,:dependency,:company,:role,:phone,:adm,:sta)");
 
     $marcadores=[
         ":ci"=>$ci,
@@ -169,7 +182,9 @@
         ":dependency"=>$dependency,
         ":company"=>$company,
         ":role"=>$role,
-        ":phone"=>$tel
+        ":phone"=>$tel,
+        ":adm"=>0,
+        ":sta"=>0
     ];
 
      $guardar_rescuer->execute($marcadores);
@@ -181,6 +196,27 @@
                 <a>El usuario se registró exitosamente</a>
             </div>
         ';
+        $id_rescuer=conexion();
+        $id_rescuer=$id_rescuer->query("SELECT max(rescuer_id) FROM rescuer");
+        if($id_rescuer->rowCount()>0){
+            $id_rescuer=$id_rescuer->fetch();
+            $huella="Se creó un el rescuer con ID:".$id_rescuer[0]." con los siguientes datos: ".$ci.", ".ucwords($nombre)." ".ucwords($apellido).", ".$mail.", ".$tel.", ".$dependency.", ".$company.", ".$role;
+
+            $tipo="Rescuers";
+
+            $marc_audit=[
+            ":fecha"=>fecha_ahora(),
+            ":huella"=>$huella,
+            ":afecta"=>$tipo,
+            ];
+            $guardar_huella=conexion();
+            $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+            (:fecha,:huella,:afecta)");
+
+            $guardar_huella->execute($marc_audit);
+            $guardar_huella=null;
+        }
+        $id_rescuer=null;
      }else{
         echo '
             <div class="notification is-danger is-light">

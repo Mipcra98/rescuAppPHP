@@ -10,7 +10,7 @@
     if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1'){ //comprobación de admin
         //verificación de existencia del rescuer
         $check_existencia=conexion();
-        $check_existencia=$check_existencia->query("SELECT rescuer_id,rescuer_state FROM rescuer WHERE rescuer_id='$id_state'");
+        $check_existencia=$check_existencia->query("SELECT rescuer_id,rescuer_name,rescuer_surname,rescuer_state FROM rescuer WHERE rescuer_id='$id_state'");
         if($check_existencia->rowCount()==1){
 
 				$check_existencia=$check_existencia->fetch();
@@ -21,8 +21,10 @@
 
 				if($check_existencia['rescuer_state']=='0'){
 					$cambiar_state->execute([":stat"=>'1']);
+					$huella="Se declaró como Activo al rescuer ".ucwords($check_existencia['rescuer_name'])." ".ucwords($check_existencia['rescuer_surname'])." con rescuer_id: ".$id_state." por parte del administrador ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido'])." con rescuer_id: ".$_SESSION['id'];
 				}else{
 					$cambiar_state->execute([":stat"=>'0']);
+					$huella="Se declaró como Inactivo al rescuer ".ucwords($check_existencia['rescuer_name'])." ".ucwords($check_existencia['rescuer_surname'])." con rescuer_id: ".$id_state." por parte del administrador ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido'])." con rescuer_id: ".$_SESSION['id'];
 				}
 
 				if($cambiar_state->rowCount()==1){
@@ -32,6 +34,20 @@
 							<a>El rescuer se pudo actualizar exitosamente</a>
 						</div>
 					';
+
+                    $tipo="Rescuers";
+
+                    $marc_audit=[
+                    ":fecha"=>fecha_ahora(),
+                    ":huella"=>$huella,
+                    ":afecta"=>$tipo,
+                    ];
+                    $guardar_huella=conexion();
+                    $guardar_huella=$guardar_huella->prepare("INSERT INTO auditTrail(auditTrail_dateTime,auditTrail_detail,auditTrail_affectTo) VALUES 
+                    (:fecha,:huella,:afecta)");
+            
+                    $guardar_huella->execute($marc_audit);
+                    $guardar_huella=null;
 				}else{
 					echo '
 						<div class="notification is-danger is-light">

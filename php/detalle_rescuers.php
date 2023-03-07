@@ -75,7 +75,7 @@
                             <tr>
                                 <td>Rol de administrador</td>
                                 <td><p class="pr-6 is">SI  </p></td>
-                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a></td>
+                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Administrador</a></td>
                             </tr>
                         ';
                     }else{
@@ -83,7 +83,7 @@
                             <tr>
                                 <td>Rol de administrador</td>
                                 <td><p class="pr-6">NO  </p></td>
-                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Admin</a></td>
+                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Administrador</a></td>
                             </tr>
                         ';
                     }
