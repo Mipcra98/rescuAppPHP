@@ -20,9 +20,9 @@
      #Verificr campos obligatorios
      if($ci=="" || $nombre=="" || $apellido=="" || $mail=="" || $tel=="" || $dependency=="" || $company=="" || $role=="" || $clave_1=="" || $clave_2==""){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No has rellenado los campos obligarorios</a>
+                <p>No has rellenado los campos obligarorios</p>
             </div>
         ';
         exit();
@@ -31,9 +31,9 @@
      #Verificar integridad de datos
      if(verificar_datos("[0-9 ]{3,40}",$ci)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "C.I." no coincide con el formato solicitado</a>
+                <p>El campo "C.I." no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -42,9 +42,9 @@
         $check_ci=$check_ci->query("SELECT rescuer_ci FROM rescuer WHERE rescuer_ci='$ci'");
         if($check_ci->rowCount()>0){
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El "C.I." ya está en uso, por favor elija otro</a>
+                    <p>El "C.I." ya está en uso, por favor elija otro</p>
                 </div>
             ';
             exit();
@@ -55,9 +55,9 @@
      #Verificar integridad de datos
      if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}",$nombre)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Nombre" no coincide con el formato solicitado</a>
+                <p>El campo "Nombre" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -65,39 +65,39 @@
 
      if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,40}",$apellido)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Apellidos" no coincide con el formato solicitado</a>
+                <p>El campo "Apellidos" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$dependency)){
+     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$dependency)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Dependencia" no coincide con el formato solicitado</a>
+                <p>El campo "Dependencia" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$company)){
+     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$company)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Compañía" no coincide con el formato solicitado</a>
+                <p>El campo "Compañía" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
      }
 
-     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$role)){
+     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}",$role)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Rol en la dependencia" no coincide con el formato solicitado</a>
+                <p>El campo "Rol en la dependencia" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -105,9 +105,9 @@
 
      if(verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$clave_1) || verificar_datos("[a-zA-Z0-9$@.-]{12,100}",$clave_2)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Contaseña" no coinciden con el formato solicitado</a>
+                <p>Los campos de "Contaseña" no coinciden con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -115,9 +115,9 @@
 
      if(verificar_datos("[0-9$@.-]{8,15}",$tel)){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Teléfono" no coincide con el formato solicitado</a>
+                <p>El campo "Teléfono" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -133,9 +133,9 @@
             $check_mail=$check_mail->query("SELECT rescuer_mail FROM rescuer WHERE rescuer_mail='$mail'");
             if($check_mail->rowCount()>0){
                 echo '
-                    <div class="notification is-danger is-light">
+                    <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>El "Correo electrónico" ya está en uso, por favor elija otro</a>
+                        <p>El "Correo electrónico" ya está en uso, por favor elija otro</p>
                     </div>
                 ';
                 exit();
@@ -143,9 +143,9 @@
             $check_mail=null;
         }else{
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El campo "Correo electrónico" ingresado no es válido</a>
+                    <p>El campo "Correo electrónico" ingresado no es válido</p>
                 </div>
             ';
             exit();
@@ -156,9 +156,9 @@
      #Verificación de claves iguales
      if($clave_1!=$clave_2){
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Contraseña y Repetición" no coinciden entre sí</a>
+                <p>Los campos de "Contraseña y Repetición" no coinciden entre sí</p>
             </div>
         ';
         exit();
@@ -191,9 +191,9 @@
 
      if($guardar_rescuer->rowCount()==1){
         echo '
-            <div class="notification is-success is-light">
+            <div class="notification has-background-success column has-text-black-bis box">
                 <strong>¡Usuario Registrado!</strong><br>
-                <a>El usuario se registró exitosamente</a>
+                <p>El usuario se registró exitosamente</p>
             </div>
         ';
         $id_rescuer=conexion();
@@ -219,9 +219,9 @@
         $id_rescuer=null;
      }else{
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No se ha podido registrar este usuario, porfavor intente nuevamente</a>
+                <p>No se ha podido registrar este usuario, porfavor intente nuevamente</p>
             </div>
         ';
      }

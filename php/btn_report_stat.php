@@ -40,14 +40,14 @@
 
 				if($cambiar_state->rowCount()==1){
 					echo '
-						<div class="notification is-success is-light">
+						<div class="notification has-background-success column has-text-black-bis box">
 							<strong>¡Reporte Atendido!</strong><br>
 							<a>El reporte se pudo actualizar exitosamente</a>
 						</div>
 					';
 				}else{
 					echo '
-						<div class="notification is-danger is-light">
+						<div class="notification has-background-danger column has-text-black-bis box">
 							<strong>¡Ocurrió un error inesperado!</strong><br>
 							<a>No se ha podido atender el reporte, intente en unos instantes</a>
 						</div>
@@ -56,7 +56,7 @@
 				$cambiar_state=null;
         }else{
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>El reporte que intenta atender no existe</a>
                 </div>
@@ -65,7 +65,7 @@
         $check_existencia=null;
     }else{
 		echo '
-			<div class="notification is-danger is-light">
+			<div class="notification has-background-danger column has-text-black-bis box">
 				<strong>¡Ocurrió un error inesperado!</strong><br>
 				<a>Usted no puede realizar esta operación</a>
 			</div>

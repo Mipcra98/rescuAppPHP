@@ -1,23 +1,25 @@
 <?php if(isset($_SESSION['id'])){ ?>
-<div class="container">
+<div class="container pr-6 pl-6 pb-6 pt-6">
 		<?php include "./inc/btn_volver.php"; ?>
-	<div class="main-container">
-            <div class="notification is-danger is-light">
-                <strong>¡Lo sentimos!</strong><br>
-                <a>Usted no puede crear nuevos usuarios desde aquí</a>
-            </div>
-		</div>
+	<div class="main-container box has-text-black-bis has-background-grey-lighter">
+        <div class="notification is-danger is-light has-text-black-bis">
+            <strong>¡Lo sentimos!</strong><br>
+            <a>Usted no puede crear nuevos usuarios desde aquí</a>
+        </div>
+	</div>
 </div>
 <?php }else{ ?>
-<div class="container">
+<div class="container pr-6 pl-6 pb-6 pt-6">
 	
-	<div class="main-container box">
+	<div class="main-container box has-text-black-bis has-background-grey-lighter pr-6 pl-6">
 
 	<form action="./php/guardar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
 		<div class="container center is-fluid pb-4">
-			<img class="logo-center" src="./img/rescuApp-Logo.png">
-			<h1 class="title has-text-centered">RescuApp</h1>
-			<h2 class="subtitle has-text-centered">Nuevo Rescuer</h2>
+		    <div class="ml-4 mr-4 columns is-centered">
+			    <img class="logo-center" src="./img/rescuApp-Logo.png">
+			</div>
+			<h1 class="title has-text-centered has-text-black-bis">RescuApp</h1>
+			<h2 class="subtitle has-text-centered has-text-black-bis">Nuevo Rescuer</h2>
 		</div>
 		  	<div class="column">
 		    	<div class="control">
@@ -52,19 +54,19 @@
 		  	<div class="column">
 		    	<div class="control">
 					<label>Dependencia</label>
-				  	<input class="input" type="text" name="rescuer_dependencia" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
+				  	<input class="input" type="text" name="rescuer_dependencia" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: CBVCE" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Compañía</label>
-				  	<input class="input" type="text" name="rescuer_compania" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
+				  	<input class="input" type="text" name="rescuer_compania" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: 1era Compañia Encarnación" required >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
 					<label>Rol en la dependencia</label>
-				  	<input class="input" type="text" name="rescuer_rol" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
+				  	<input class="input" type="text" name="rescuer_rol" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
 				</div>
 		  	</div>
 		  	<div class="column">
@@ -80,12 +82,12 @@
 				</div>
 		  	</div>
 		<div class="form-rest"></div>
-		<p class="has-text-centered">
-			<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Guardar</button>
-		</p><br><br>
-		<p class="has-text-centered mb-6 mt-2">
+		<p class="has-text-centered mb-4 mt-3">
+			<button type="submit" class="button is-normal has-text-black-bis" style="background-color:#FF8000;border-color:#000000;"><strong>Guardar</strong></button>
+		</p>
+		<p class="has-text-centered mb-4 mt-3 has-text-black-bis">
 			Ya estas registrado como Rescuer?
-			<a href="index.php?vista=login"><strong>Conectese aquí</strong></a>
+			<a href="index.php?vista=login"><strong class="has-text-black-bis">Conectese aquí</strong></a>
 		</p>
 	</form>
 	</div>

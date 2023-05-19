@@ -29,7 +29,7 @@
 
 				if($cambiar_adm->rowCount()==1){
 					echo '
-						<div class="notification is-success is-light">
+						<div class="notification has-background-success column has-text-black-bis box">
 							<strong>¡Usuario Actualizado!</strong><br>
 							<a>El rescuer se pudo actualizar exitosamente</a>
 						</div>
@@ -50,7 +50,7 @@
                     $guardar_huella=null;
 				}else{
 					echo '
-						<div class="notification is-danger is-light">
+						<div class="notification has-background-danger column has-text-black-bis box">
 							<strong>¡Ocurrió un error inesperado!</strong><br>
 							<a>No se ha podido actualizar el rescuer, intente en unos instantes</a>
 						</div>
@@ -59,7 +59,7 @@
 				$cambiar_adm=null;
         }else{
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>El usuario que intenta actualizar no existe</a>
                 </div>
@@ -68,7 +68,7 @@
         $check_existencia=null;
     }else{
 		echo '
-			<div class="notification is-danger is-light">
+			<div class="notification has-background-danger column has-text-black-bis box">
 				<strong>¡Ocurrió un error inesperado!</strong><br>
 				<a>Usted no puede realizar esta operación</a>
 			</div>

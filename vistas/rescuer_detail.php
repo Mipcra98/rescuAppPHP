@@ -15,11 +15,8 @@
 ?>
 
 
-<div class="container pr-6 pl-6 pb-6">
-<div class="container is-fluid">
-    <h1 class="title">Rescuer</h1>
-    <h2 class="subtitle">Detalle del Rescuer</h2>
-</div>    
+<div class="container pr-6 pl-6 pb-6 pt-4 has-text-black-bis">
+<div class="container columns pl-4 pr-6 is-vcentered"> 
     <?php
 
 
@@ -29,9 +26,14 @@
 
 		if($mostrar_rescuer->rowCount()>0){
 			$datos=$mostrar_rescuer->fetch();
-            
+			?>
+    <div class="column is-one-quarter">
+        <h1 class="title has-text-black-bis">Rescuer</h1>
+        <h2 class="subtitle has-text-black-bis">Detalle del Rescuer</h2>
+    </div>
+            <?php
+                echo '<div class="column">';
             if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1']){
-
                 if(isset($_GET['rescuer_adm'])){
                     require_once "./php/btn_rescuer_adm.php";
                 }
@@ -39,30 +41,27 @@
                 if(isset($_GET['rescuer_stat'])){
                     require_once "./php/btn_rescuer_stat.php";
                 }
-                
-                echo '
-                    <div class="columns is-gapless">
-                        <p class="column is-half"></p>
-                        <p class="has-text-right pr-4 column is-one-quarter">
-                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button is-success is-rounded"><strong>Cambiar Estado</strong></a>
+                echo '</div>  
+                        <p class="column is-2 has-text-right">
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$id.'&rescuer_stat" class="button has-text-right has-background-danger-dark is-normal has-text-black-bis" style="border-color:#000000"><strong>Cambiar Estado</strong></a>
                         </p>
                 ';
                 include "./inc/btn_volver.php";
     
-                echo '</div>';
             }else{
+                echo '</div>';
                 include "./inc/btn_volver.php";
             }
             
     ?>
-
-    <div class="table-container box">
-        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+</div>   
+    <div class="table-container box has-text-black-bis has-background-grey-lighter">
+        <table class="table is-striped is-hoverable is-fullwidth is-bordered has-background-grey-lighter">
             <thead>
-                <tr class="has-text-centered">
+                <tr class="has-background-grey-light">
                     <th>Nombre del campo</th>
                     <th>Valor del campo</th>
-                    <th>Acciones</th>
+                    <th class="has-text-centered" >Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,8 +74,10 @@
 	
 	<?php 
         }else{
-            include "./inc/btn_volver.php";
+            echo '<div class="column">';
             include "./inc/notif_alerta.php";
+            echo '</div>';
+            include "./inc/btn_volver.php";
         }
 		$mostrar_rescuer=null;
         $check_adm=null;

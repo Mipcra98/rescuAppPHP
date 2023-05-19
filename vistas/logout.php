@@ -1,6 +1,6 @@
 <?php
     require_once "./php/main.php";
-    
+
     $huella="Cierre de Sesión por el rescuer ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido'])." con rescuer_id: ".$_SESSION['id'];
 
     $tipo="Rescuers";

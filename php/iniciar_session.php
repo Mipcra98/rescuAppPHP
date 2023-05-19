@@ -96,7 +96,7 @@
                 }
             }else{
                 echo '
-                    <div class="notification is-danger is-light">
+                    <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Cuenta Inactiva!</strong><br>
                         <a>Por favor, póngase en contacto personalmente con un administrador para que éste active su cuenta.</a>
                     </div>
@@ -106,7 +106,7 @@
 
         }else{ #Si no coinciden los datos de contraseña y correo con la BD
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>Los datos proveidos no son correctos</a>
                 </div>
@@ -115,7 +115,7 @@
 
      }else{
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
                 <a>Los datos proveidos no son correctos</a>
             </div>

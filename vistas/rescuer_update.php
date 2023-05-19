@@ -7,26 +7,27 @@
 
 ?>
 
-<div class="container pr-6 pl-6 pb-6">
-<div class="container is-fluid">
-	<h1 class="title">Rescuer</h1>
-	<h2 class="subtitle">Actualizar mi perfil</h2>
-</div>
-
-	<?php 
-
-		include "./inc/btn_volver.php";
-	
-		$check_rescuer=conexion();
-		$check_rescuer=$check_rescuer->query("SELECT * FROM rescuer WHERE rescuer_id='$id'");
-
-		if($check_rescuer->rowCount()>0 AND $_SESSION['id']==$id){
-			$datos=$check_rescuer->fetch();
-		
-
-	?>
-
-	<div class="main-container box">
+<div class="container pr-6 pl-6 pb-6 pt-4 has-text-black-bis">
+    <div class="container columns is-vcentered pr-5 pl-5">
+        <div class="column is-one-quarter">
+        	<h1 class="title has-text-black-bis">Rescuer</h1>
+        	<h2 class="subtitle has-text-black-bis">Actualizar mi perfil</h2>
+        </div>
+        <div class="column"></div>
+    	<?php 
+      
+    		include "./inc/btn_volver.php";
+    	
+    		$check_rescuer=conexion();
+    		$check_rescuer=$check_rescuer->query("SELECT * FROM rescuer WHERE rescuer_id='$id'");
+    
+    		if($check_rescuer->rowCount()>0 AND $_SESSION['id']==$id){
+    			$datos=$check_rescuer->fetch();
+    		
+    
+    	?>
+    </div>
+	<div class="main-container box has-text-black-bis has-background-grey-lighter">
 		<form action="./php/actualizar_rescuer.php" method="POST" class="FormularioAjax" autocomplete="off" >
 			<input type="hidden" value="<?php echo $datos['rescuer_id']; ?>" name="rescuer_id" required >
 			<div class="columns">
@@ -67,7 +68,7 @@
 				<div class="column">
 					<div class="control">
 						<label>Dependencia</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_dependency']; ?>" name="rescuer_dependencia" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_dependency']; ?>" name="rescuer_dependencia" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Bomberos Amarillos" required >
 					</div>
 				</div>
 			</div>
@@ -75,17 +76,17 @@
 				<div class="column">
 					<div class="control">
 						<label>Compañía</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_company']; ?>" name="rescuer_compania" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_company']; ?>" name="rescuer_compania" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: 2da Compañia Encarnación" required >
 					</div>
 				</div>
 				<div class="column">
 					<div class="control">
 						<label>Rol en la dependencia</label>
-						<input class="input" type="text" value="<?php echo $datos['rescuer_role']; ?>" name="rescuer_rol" pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
+						<input class="input" type="text" value="<?php echo $datos['rescuer_role']; ?>" name="rescuer_rol" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{3,70}" maxlength="70" placeholder="Ej: Radio-Operador, 1era Respuesta, etc" required >
 					</div>
 				</div>
-			</div><br><br>
-			<strong>En caso usted desee cambiar su contraña de acceso cargue en estos campos, en caso que no lo desee hacer deje los campos vacíos</strong>
+			</div>
+			<div class="block pt-6"><strong>En caso usted desee cambiar su contraña de acceso cargue en estos campos, en caso que no lo desee hacer deje los campos vacíos</strong></div>
 			<div class="columns">
 				<div class="column">
 					<div class="control">
@@ -99,9 +100,9 @@
 						<input class="input" type="password" name="usuario_clave_nueva_2" pattern="[a-zA-Z0-9$@.-]{12,100}" maxlength="100">
 					</div>
 				</div>
-			</div><br><br>
-			<strong>Para confirmar los cambios deberá cargar en este apartado los datos con los que ingresó anteriormente</strong>
-			<div class="columns">
+			</div>
+			<div class="block pt-4"><strong>Para confirmar los cambios deberá cargar en este apartado los datos con los que ingresó anteriormente</strong></div>
+			<div class="columns pb-4">
 				<div class="column">
 					<div class="control">
 						<label>Correo electrónico</label>
@@ -115,9 +116,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-rest"></div><br><br>
-			<p class="has-text-centered">
-				<button type="submit" class="button is-rounded" style="background-color:#FF8000;border-color:#000000;">Actualizar</button>
+			<div class="form-rest"></div>
+			<p class="has-text-centered pb-5 block">
+				<button type="submit" class="button is-normal has-text-black-bis" style="background-color:#FF8000;border-color:#000000;"><strong>Actualizar</strong></button>
 			</p>
 		</form>
 	</div>
@@ -125,8 +126,10 @@
 	<?php 
 
 		}else{
+            echo '<div class="column">';
+            include "./inc/notif_alerta.php";
+            echo '</div>';
             include "./inc/btn_volver.php";
-			include "./inc/notif_alerta.php";
 		}
 		$check_rescuer=null;
 	?>

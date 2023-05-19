@@ -23,8 +23,6 @@ body,html{
 .logo-center{
     height: 128px;
     width: 128px;
-    display: flex;
-    align-items: center;
 }
 
 .form-inline{

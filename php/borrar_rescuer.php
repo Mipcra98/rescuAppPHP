@@ -24,7 +24,7 @@
                 $eliminar_rescuer->execute([":id"=>$rescuer_id_del]);
                 if($eliminar_rescuer->rowCount()==1){
                     echo '
-                        <div class="notification is-success is-light">
+                        <div class="notification has-background-success column has-text-black-bis box">
                             <strong>¡Usuario Eliminado!</strong><br>
                             <a>El rescuer se pudo eliminar exitosamente</a>
                         </div>
@@ -47,7 +47,7 @@
                     $datos_borrar=null;
                 }else{
                     echo '
-                        <div class="notification is-danger is-light">
+                        <div class="notification has-background-danger column has-text-black-bis box">
                             <strong>¡Ocurrió un error inesperado!</strong><br>
                             <a>No se ha podido eliminar el rescuer, intente en unos instantes</a>
                         </div>
@@ -58,7 +58,7 @@
                 $eliminar_rescuer=null;
             }else{
                 echo '
-                    <div class="notification is-danger is-light">
+                    <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
                         <a>No es posible eliminar a este rescuer, está asociado con uno o más reportes</a>
                     </div>
@@ -67,7 +67,7 @@
             $check_reporte=null;
         }else{
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>El usuario que intenta eliminar no existe</a>
                 </div>
@@ -77,7 +77,7 @@
         $check_existencia=null;
     }else{
         echo '
-            <div class="notification is-danger is-light">
+            <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
                 <a>Usted no puede realizar esta operación</a>
             </div>

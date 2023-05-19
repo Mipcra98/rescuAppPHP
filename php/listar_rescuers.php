@@ -21,7 +21,7 @@
 
         if($total==0){
             echo '
-                <tr class="has-text-centered" >
+                <tr class="has-text-centered has-text-black-bis" >
                     <td colspan="7">
                         <strong>No hay registros en el sistema</strong>
                     </td>
@@ -30,14 +30,14 @@
         }else{
             foreach($datos as $rows){
                 echo '
-                    <tr class="has-text-centered" >
-                        <td>'.$rows['rescuer_id'].'</td>
-                        <td>'.$rows['rescuer_name'].'</td>
-                        <td>'.$rows['rescuer_surname'].'</td>
-                        <td>'.$rows['rescuer_phone'].'</td>
-                        <td>'.$rows['rescuer_dependency'].'</td>
-                        <td>
-                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
+                    <tr>
+                        <td class="has-text-centered" >'.$rows['rescuer_id'].'</td>
+                        <td class="has-text-centered" >'.$rows['rescuer_name'].'</td>
+                        <td class="has-text-centered" >'.$rows['rescuer_surname'].'</td>
+                        <td class="has-text-centered" >'.$rows['rescuer_phone'].'</td>
+                        <td class="has-text-centered" >'.$rows['rescuer_dependency'].'</td>
+                        <td class="has-text-centered" >
+                            <a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$rows['rescuer_id'].'" class="button is-small" style="background-color:#FF8000;border-color:#000000"><strong class="has-text-black-bis">Ver a detalle</strong></a>
                         </td>
                     </tr>
                 ';

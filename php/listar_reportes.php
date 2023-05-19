@@ -24,7 +24,7 @@
 
         if($total==0){
             echo '
-                <tr class="has-text-centered" >
+                <tr class="has-text-centered has-text-black-bis" >
                     <td colspan="6">
                         <strong>No hay registros en el sistema</strong>
                     </td>
@@ -83,9 +83,9 @@
                 $fecha_evento=date("Y-m-d H:i:s", $fecha_reg);
 
                 if($rows['report_attendend']==0){ //comprobación de estado atendido o no.
-                    echo '<tr class="has-text-centered is-light" style="background-color:#F78181;">';
+                    echo '<tr class="has-text-centered has-text-black-bis has-background-danger-dark">';
                 }else{
-                    echo '<tr class="has-text-centered is-light" >';
+                    echo '<tr class="has-text-centered has-text-black-bis" >';
                 }
 
                 //impresión de los datos iniciales
@@ -95,7 +95,7 @@
                 ';
                 if($rows['report_userType']=='0'){   //impresión de tipo VÍCTIMA
                     echo '
-                            <td><strong>VÍCTIMA</strong></td>
+                            <td><strong class="has-text-black-bis">VÍCTIMA</strong></td>
                             <td>'.$rows['user_name'].' '.$rows['user_surname'].'__'.$genero_usuario.'__'.$edad.' años__'.$blood.'</td>
                     ';
                 }else{   //impresión de tipo TESTIGO
@@ -198,21 +198,21 @@
                     }
 
                     echo '
-                            <td>TESTIGO</td>
+                            <td><strong class="has-text-black-bis">TESTIGO</strong></td>
                             <td>'.$rows['report_numberVictims'].' victimas__'.$estado_victima.'__'.$caso.'</td>
                             
                     ';  //report.report_accidentTipe,report.report_crashTipe,report.report_runOver
                 }
 
                 if($rows['report_attendend']==0){ //comprobación de estado atendido o no.
-                    echo '<td><strong>NO ATENDIDO</strong></td>';
+                    echo '<td><strong class="has-text-black-bis">NO ATENDIDO</strong></td>';
                 }else{
                     echo '<td>Atendido</td>';
                 }
 
                 echo '
                         <td>
-                            <a href="index.php?vista=report_detail&report_id_deta='.$rows['report_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000">Ver a detalle</a>
+                            <a href="index.php?vista=report_detail&report_id_deta='.$rows['report_id'].'" class="button is-small" style="background-color:#FF8000;border-color:#000000"><strong class="has-text-black-bis">Ver a detalle</strong></a>
                         </td>
                     </tr>
                 ';

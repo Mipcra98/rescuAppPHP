@@ -14,7 +14,7 @@
 
         if($check_rescuer->rowCount()<=0){
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>El Rescuer no existe en el sistema</a>
                 </div>
@@ -75,7 +75,7 @@
                             <tr>
                                 <td>Rol de administrador</td>
                                 <td><p class="pr-6 is">SI  </p></td>
-                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Administrador</a></td>
+                                <td class="has-text-centered"><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-small has-text-black-bis has-background-danger-dark" style="border-color:#000000"><strong>Cambiar rol Administrador</strong></a></td>
                             </tr>
                         ';
                     }else{
@@ -83,7 +83,7 @@
                             <tr>
                                 <td>Rol de administrador</td>
                                 <td><p class="pr-6">NO  </p></td>
-                                <td><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-danger is-rounded is-small">Cambiar rol Administrador</a></td>
+                                <td class="has-text-centered"><a href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'&rescuer_adm" class="button is-small has-text-black-bis has-background-danger-dark" style="border-color:#000000"><strong>Cambiar rol Administrador</strong></a></td>
                             </tr>
                         ';
                     }
@@ -127,8 +127,8 @@
                 if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1'){
                     echo '
                         <tr class="has-text-centered" >
-                            <td colspan="3">
-                                <a href="index.php?vista=rescuer_list&rescuer_id_del='.$datos['rescuer_id'].'" class="button is-danger is-rounded is-small">Eliminar este Rescuer</a>
+                            <td colspan="3" class="has-text-centered">
+                                <a href="index.php?vista=rescuer_list&rescuer_id_del='.$datos['rescuer_id'].'" class="button is-small has-text-black-bis has-background-danger-dark" style="border-color:#000000"><strong>Eliminar este Rescuer</strong></a>
                             </td>
                         </tr>
                     ';

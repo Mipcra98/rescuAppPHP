@@ -21,7 +21,7 @@
 
         if($total==0){
             echo '
-                <tr class="has-text-centered" >
+                <tr class="has-text-centered has-text-black-bis" >
                     <td colspan="6">
                         <strong>No hay registros en el sistema</strong>
                     </td>
@@ -30,14 +30,14 @@
         }else{
             foreach($datos as $rows){
                 echo '
-                    <tr class="has-text-centered" >
-                        <td>'.$rows['user_id'].'</td>
-                        <td>'.$rows['user_name'].'</td>
-                        <td>'.$rows['user_surname'].'</td>
-                        <td>'.$rows['user_phone'].'</td>
-                        <td>'.$rows['user_mail'].'</td>
-                        <td>
-                            <a href="index.php?vista=user_detail&user_id_deta='.$rows['user_id'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;">Ver a detalle</a>
+                    <tr>
+                        <td class="has-text-centered" >'.$rows['user_id'].'</td>
+                        <td class="has-text-centered" >'.$rows['user_name'].'</td>
+                        <td class="has-text-centered" >'.$rows['user_surname'].'</td>
+                        <td class="has-text-centered" >'.$rows['user_phone'].'</td>
+                        <td class="has-text-centered" >'.$rows['user_mail'].'</td>
+                        <td class="has-text-centered" >
+                            <a href="index.php?vista=user_detail&user_id_deta='.$rows['user_id'].'" class="button is-small" style="background-color:#FF8000;border-color:#000000"><strong class="has-text-black-bis">Ver a detalle</strong></a>
                         </td>
                     </tr>
                 ';

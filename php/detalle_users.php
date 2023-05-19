@@ -9,7 +9,7 @@
 
         if($check_user->rowCount()<=0){
             echo '
-                <div class="notification is-danger is-light">
+                <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
                     <a>El Usuario no existe en el sistema</a>
                 </div>

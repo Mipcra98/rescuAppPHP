@@ -11,7 +11,7 @@
     
             if($check_report->rowCount()<=0){
                 echo '
-                    <div class="notification is-danger is-light">
+                    <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
                         <a>El Reporte no existe en el sistema</a>
                     </div>
@@ -213,8 +213,8 @@
                         echo '
                             <tr>
                                 <td>Ubicación</td>
-                                <td><p class="pr-6">'.$datos['report_coordinates'].'</p></td>';
-                            echo'<td><a href="https://www.google.es/maps/place/'.$datos['report_coordinates'].'" class="button is-rounded is-small" style="background-color:#FF8000;border-color:#000000;width: 8vw;" target="_blank">Ver Mapa</a> 
+                                <td><p>'.$datos['report_coordinates'].'</p></td>';
+                            echo'<td class="has-text-centered"><a href="https://www.google.es/maps/place/'.$datos['report_coordinates'].'" class="button is-small has-text-black-bis" style="background-color:#FF8000;border-color:#000000;width: 8vw;" target="_blank"><strong>Ver Mapa</strong></a> 
                                 </td>
                             </tr>
                         ';
@@ -223,20 +223,29 @@
                     //identificación de caso atendido o no
                     if($datos['report_attendend']=='0'){
                         $atendido="NO Atendido";
-                        echo '<tr style="background-color:#F78181;">';
+                        echo '
+                            <tr class="has-text-black-bis has-background-danger-dark">
+                                <td><strong class="has-text-black-bis">Estado de solicitud</strong></td>
+                                <td><strong class="has-text-black-bis">'.$atendido.'</strong></td>
+                                <td></td>
+                            </tr>
+                        ';
                     }else{
-                        echo '<tr>';
                         $atendido="Atendido";
+                        echo '
+                            <tr class="has-text-black-bis">
+                                <td>Estado de solicitud</td>
+                                <td><strong>'.$atendido.'</strong></td>
+                                <td></td>
+                            </tr>
+                        ';
                     }
-                    echo '<td>Estado de solicitud</td>
-                            <td>'.$atendido.'</td>
-                            <td></td>
-                        </tr>
+                    echo '
                         <tr>
                             <td>Usuario que reportó</td>
                             <td>
                                 <p>'.ucwords($datos['user_name']).' '.ucwords($datos['user_surname']).'   </p></td>
-                            <td><a href="index.php?vista=user_detail&user_id_deta='.$datos['user_id'].'" class="button is-rounded is-small has-text-centered" style="background-color:#FF8000;border-color:#000000;width: 8vw;">Ver a detalle</a></td>
+                            <td class="has-text-centered"><a href="index.php?vista=user_detail&user_id_deta='.$datos['user_id'].'" class="button is-small has-text-black-bis" style="background-color:#FF8000;border-color:#000000;width: 8vw;"><strong>Ver a detalle</strong></a></td>
                         </tr>
                     ';
 
@@ -250,13 +259,13 @@
                             <tr>
                                 <td>Rescuer que atendió el caso</td>
                                 <td><p class="pr-6">'.ucwords($datos['rescuer_name']).' '.ucwords($datos['rescuer_surname']).'   </p></td>
-                                <td><a id="view_map" href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'" class="button is-rounded is-small has-text-centered" style="background-color:#FF8000;border-color:#000000;width: 8vw;">Ver a detalle</a></td>
+                                <td class="has-text-centered"><a id="view_map" href="index.php?vista=rescuer_detail&rescuer_id_deta='.$datos['rescuer_id'].'" class="button is-small has-text-black-bis" style="background-color:#FF8000;border-color:#000000;width: 8vw;"><strong>Ver a detalle</strong></a></td>
                             </tr>
                             ';
                         }else{
                             echo '
-                            <tr class="has-text-centered" >
-                                <td colspan="3">Aún no se asignó un Rescuer</td>
+                            <tr>
+                                <td colspan="3" class="has-text-centered"><strong>Aún no se asignó un Rescuer</strong></td>
                             </tr>
                             ';
                         }
@@ -264,7 +273,7 @@
                     }else{
                         echo '
                             <tr>
-                                <td colspan="3">Aún no se asignó un Rescuer</td>
+                                <td colspan="3" class="has-text-centered"><strong>Aún no se asignó un Rescuer</strong></td>
                             </tr>
                         ';
                     }
