@@ -4,7 +4,7 @@
 	<div class="main-container box has-text-black-bis has-background-grey-lighter">
         <div class="notification is-danger is-light has-text-black-bis">
             <strong>¡Lo sentimos!</strong><br>
-            <a>Usted no puede crear nuevos usuarios desde aquí</a>
+            <p>Usted no puede crear nuevos usuarios desde aquí</p>
         </div>
 	</div>
 </div>

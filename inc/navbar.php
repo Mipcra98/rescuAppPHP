@@ -12,8 +12,8 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-item has-dropdown is-hoverable">
+    <div id="navbarBasicExample" class="navbar-menu columns is-vcentered">
+      <div class="navbar-item has-dropdown is-hoverable column is-2">
         <a class="navbar-link has-text-black-bis">
           Otros detalles
         </a>
@@ -24,12 +24,15 @@
           <a class="navbar-item has-text-black-bis" href="index.php?vista=rescuer_list">Lista de Rescuers</a>
         </div>
       </div>
-      <div class="navbar-item">
+      <div class="navbar-item column">
         <p class="has-text-black-bis">¡Bienvenido <strong class="has-text-black-bis"><?php echo ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido']);?></strong>!</p>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+            <a href="index.php?vista=DwlRescueAppAPK" class="button is-normal has-text-black-bis has-background-danger-dark" style="border-color:#000000;">
+              <strong>Descargar APK</strong>
+            </a>
             <?php 
               if(isset($_SESSION['id'])){
                 echo '

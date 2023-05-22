@@ -13,7 +13,7 @@
                 echo '
                     <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>El Reporte no existe en el sistema</a>
+                        <p>El Reporte no existe en el sistema</p>
                     </div>
                 ';
                 exit();

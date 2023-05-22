@@ -9,7 +9,7 @@
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No has rellenado los campos obligarorios</a>
+                <p>No has rellenado los campos obligarorios</p>
             </div>
         ';
         exit();
@@ -20,7 +20,7 @@
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo de "Contaseña" no coincide con el formato solicitado</a>
+                <p>El campo de "Contaseña" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -35,7 +35,7 @@
                 echo '
                     <div class="notification is-danger is-light">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>El "Correo electrónico" ingresado no está registrado, porfavor regístrate para acceder</a>
+                        <p>El "Correo electrónico" ingresado no está registrado, porfavor regístrate para acceder</p>
                     </div>
                 ';
                 exit();
@@ -45,7 +45,7 @@
             echo '
                 <div class="notification is-danger is-light">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El campo "Correo electrónico" ingresado no es válido</a>
+                    <p>El campo "Correo electrónico" ingresado no es válido</p>
                 </div>
             ';
             exit();
@@ -98,7 +98,7 @@
                 echo '
                     <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Cuenta Inactiva!</strong><br>
-                        <a>Por favor, póngase en contacto personalmente con un administrador para que éste active su cuenta.</a>
+                        <p>Por favor, póngase en contacto personalmente con un administrador para que éste active su cuenta.</p>
                     </div>
                 ';
             }
@@ -108,7 +108,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>Los datos proveidos no son correctos</a>
+                    <p>Los datos proveidos no son correctos</p>
                 </div>
             ';
         }
@@ -117,7 +117,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los datos proveidos no son correctos</a>
+                <p>Los datos proveidos no son correctos</p>
             </div>
         ';
      }

@@ -1,6 +1,6 @@
 <div class="main-container has-background-grey-light pr-6 pl-6 pb-6 pt-6">
     <form class="box login has-background-grey" action="" method="POST" autocomplete="off">
-		<div class="form-rest"></div><br>
+		<div class="form-rest"></div>
         <div class="ml-4 mr-4 columns is-centered"><img class="logo-center" src="./img/rescuApp-Logo.png"></div>
 		<h5 class="title is-5 has-text-centered has-text-black-bis">RescuApp</h5>
 
@@ -26,7 +26,12 @@
 			Aún no te has registrado como Rescuer?
 			<a href="index.php?vista=register"><strong class="has-text-white-bis">Registrate aquí</strong></a>
 		</p>
-
+		<div class="has-text-centered mb-4 mt-5 has-text-black-bis">
+			<p class="has-text-black-bis block"><strong class="has-text-black-bis block">Usted aún no posee la aplicación para realizar reportes en su dispositivo Android?</strong><br> Descárgalo pulsando el botón de abajo.</p>
+			<a href="index.php?vista=DwlRescueAppAPK" class="button is-normal has-text-black-bis has-background-danger-dark block" style="border-color:#000000;">
+				<strong>Descargar APK</strong>
+			</a>
+		</div>
 
 		<?php
 			if(isset($_POST['login_correo']) && isset($_POST['login_clave'])){

@@ -52,7 +52,7 @@
 					echo '
 						<div class="notification has-background-danger column has-text-black-bis box">
 							<strong>¡Ocurrió un error inesperado!</strong><br>
-							<a>No se ha podido actualizar el rescuer, intente en unos instantes</a>
+							<p>No se ha podido actualizar el rescuer, intente en unos instantes</p>
 						</div>
 					';
 				}
@@ -61,7 +61,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El usuario que intenta actualizar no existe</a>
+                    <p>El usuario que intenta actualizar no existe</p>
                 </div>
             ';
         }
@@ -70,7 +70,7 @@
 		echo '
 			<div class="notification has-background-danger column has-text-black-bis box">
 				<strong>¡Ocurrió un error inesperado!</strong><br>
-				<a>Usted no puede realizar esta operación</a>
+				<p>Usted no puede realizar esta operación</p>
 			</div>
 		';
 	}

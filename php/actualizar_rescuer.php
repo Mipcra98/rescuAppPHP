@@ -13,7 +13,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El usuario no existe en el sistema</a>
+                <p>El usuario no existe en el sistema</p>
             </div>
         ';
         exit();
@@ -31,7 +31,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No has rellenado los campos obligarorios, que corresponde a su "Correo" y "Contraseña" vigentes</a>
+                <p>No has rellenado los campos obligarorios, que corresponde a su "Correo" y "Contraseña" vigentes</p>
             </div>
         ';
         exit();
@@ -41,7 +41,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo de "Contaseña" no coinciden con el formato solicitado</a>
+                <p>El campo de "Contaseña" no coinciden con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -54,7 +54,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Correo electrónico" ingresado no es válido</a>
+                <p>El campo "Correo electrónico" ingresado no es válido</p>
             </div>
         ';
         exit();
@@ -71,7 +71,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>Los campos de "Correo" y "Contraseña" actuales no son correctos</a>
+                    <p>Los campos de "Correo" y "Contraseña" actuales no son correctos</p>
                 </div>
             ';
             exit();
@@ -81,7 +81,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Los campos de "Correo" y "Contraseña" actuales no son correctos</a>
+                <p>Los campos de "Correo" y "Contraseña" actuales no son correctos</p>
             </div>
         ';
         exit();
@@ -108,7 +108,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>No has rellenado los campos obligarorios</a>
+                <p>No has rellenado los campos obligarorios</p>
             </div>
         ';
         exit();
@@ -119,7 +119,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "C.I." no coincide con el formato solicitado</a>
+                <p>El campo "C.I." no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -130,7 +130,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El "C.I." ya está en uso, por favor elija otro</a>
+                    <p>El "C.I." ya está en uso, por favor elija otro</p>
                 </div>
             ';
             exit();
@@ -142,7 +142,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Nombre" no coincide con el formato solicitado</a>
+                <p>El campo "Nombre" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -152,7 +152,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Apellidos" no coincide con el formato solicitado</a>
+                <p>El campo "Apellidos" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -162,7 +162,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Dependencia" no coincide con el formato solicitado</a>
+                <p>El campo "Dependencia" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -172,7 +172,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Compañía" no coincide con el formato solicitado</a>
+                <p>El campo "Compañía" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -182,7 +182,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Rol en la dependencia" no coincide con el formato solicitado</a>
+                <p>El campo "Rol en la dependencia" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -192,7 +192,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>El campo "Teléfono" no coincide con el formato solicitado</a>
+                <p>El campo "Teléfono" no coincide con el formato solicitado</p>
             </div>
         ';
         exit();
@@ -210,7 +210,7 @@
                 echo '
                     <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>El "Correo electrónico" ya está en uso, por favor elija otro</a>
+                        <p>El "Correo electrónico" ya está en uso, por favor elija otro</p>
                     </div>
                 ';
                 exit();
@@ -220,7 +220,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El campo "Correo electrónico" ingresado no es válido</a>
+                    <p>El campo "Correo electrónico" ingresado no es válido</p>
                 </div>
             ';
             exit();
@@ -233,7 +233,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>Los campos de "Contraseña y Repetición" no coinciden con el formato solicitado</a>
+                    <p>Los campos de "Contraseña y Repetición" no coinciden con el formato solicitado</p>
                 </div>
             ';
             exit();
@@ -243,7 +243,7 @@
                 echo '
                     <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>Los campos de "Contraseña y Repetición" no coinciden entre sí</a>
+                        <p>Los campos de "Contraseña y Repetición" no coinciden entre sí</p>
                     </div>
                 ';
                 exit();
@@ -279,7 +279,7 @@
        echo '
            <div class="notification  has-background-success column has-text-black-bis box">
                <strong>¡Usuario Actualizado!</strong><br>
-               <a>El usuario se actualizó exitosamente</a>
+               <p>El usuario se actualizó exitosamente</p>
            </div>
        ';
        $_SESSION['ci']=$ci;
@@ -310,7 +310,7 @@
        echo '
            <div class="notification has-background-danger column has-text-black-bis box">
                <strong>¡Ocurrió un error inesperado!</strong><br>
-               <a>No se ha podido registrar este usuario, porfavor intente nuevamente</a>
+               <p>No se ha podido registrar este usuario, porfavor intente nuevamente</p>
            </div>
        ';
     }

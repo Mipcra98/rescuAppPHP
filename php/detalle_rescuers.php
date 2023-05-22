@@ -16,7 +16,7 @@
             echo '
                 <div class="notification has-background-danger has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El Rescuer no existe en el sistema</a>
+                    <p>El Rescuer no existe en el sistema</p>
                 </div>
             ';
             exit();

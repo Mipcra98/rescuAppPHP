@@ -18,7 +18,7 @@
               }
             }
     
-            if(is_file("./vistas/".$_GET['vista'].".php") && $_GET['vista']!="register" && $_GET['vista']!="login" && $_GET['vista']!="404"){
+            if(is_file("./vistas/".$_GET['vista'].".php") && $_GET['vista']!="register" && $_GET['vista']!="login" && $_GET['vista']!="404" && $_GET['vista']!="DwlRescueAppAPK"){
     
                   #Cierre de sesión forzada
                   if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['correo']) || $_SESSION['correo']=="")){
@@ -37,6 +37,9 @@
               elseif($_GET['vista']=="register"){
                 include "./vistas/rescuer_new.php";
                 include "./inc/script.php";
+              }
+              elseif($_GET['vista']=="DwlRescueAppAPK"){
+                include "./php/btn_descargar_apk.php";
               }else{
                 include "./vistas/404.php";
               }

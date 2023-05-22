@@ -42,6 +42,7 @@
             if($datos['report_attendend']==0 && !isset($_GET['report_stat'])){
 
                 echo '
+                    </p>
                     <p class="has-text-right pr-4 column is-2">
                         <a href="index.php?vista=report_detail&report_id_deta='.$id_det.'&report_stat" class="button has-text-right has-background-danger-dark is-normal has-text-black-bis" style="border-color:#000000"><strong>Atender</strong></a>
                     </p>
@@ -54,6 +55,7 @@
                 include "./inc/btn_volver.php";
             }
         }else{
+            echo '</p>';
             include "./inc/btn_volver.php";
         }
         

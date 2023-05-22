@@ -26,7 +26,7 @@
                     echo '
                         <div class="notification has-background-success column has-text-black-bis box">
                             <strong>¡Usuario Eliminado!</strong><br>
-                            <a>El rescuer se pudo eliminar exitosamente</a>
+                            <p>El rescuer se pudo eliminar exitosamente</p>
                         </div>
                     ';
                     $huella="Se eliminó el rescuer ".ucwords($datos_borrar['rescuer_name'])." ".ucwords($datos_borrar['rescuer_surname'])." de ID: ".$rescuer_id_del." por parte del administrador ".ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido'])." con rescuer_id: ".$_SESSION['id'];
@@ -49,7 +49,7 @@
                     echo '
                         <div class="notification has-background-danger column has-text-black-bis box">
                             <strong>¡Ocurrió un error inesperado!</strong><br>
-                            <a>No se ha podido eliminar el rescuer, intente en unos instantes</a>
+                            <p>No se ha podido eliminar el rescuer, intente en unos instantes</p>
                         </div>
                     ';
                 }
@@ -60,7 +60,7 @@
                 echo '
                     <div class="notification has-background-danger column has-text-black-bis box">
                         <strong>¡Ocurrió un error inesperado!</strong><br>
-                        <a>No es posible eliminar a este rescuer, está asociado con uno o más reportes</a>
+                        <p>No es posible eliminar a este rescuer, está asociado con uno o más reportes</p>
                     </div>
                 ';
             }
@@ -69,7 +69,7 @@
             echo '
                 <div class="notification has-background-danger column has-text-black-bis box">
                     <strong>¡Ocurrió un error inesperado!</strong><br>
-                    <a>El usuario que intenta eliminar no existe</a>
+                    <p>El usuario que intenta eliminar no existe</p>
                 </div>
             ';
 
@@ -79,7 +79,7 @@
         echo '
             <div class="notification has-background-danger column has-text-black-bis box">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                <a>Usted no puede realizar esta operación</a>
+                <p>Usted no puede realizar esta operación</p>
             </div>
         ';
     }
