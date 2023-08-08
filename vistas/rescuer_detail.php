@@ -33,7 +33,7 @@
     </div>
             <?php
                 echo '<div class="column">';
-            if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1']){
+            if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin'=='1'] && $_SESSION['id']!=$_GET['rescuer_id_deta']){
                 if(isset($_GET['rescuer_adm'])){
                     require_once "./php/btn_rescuer_adm.php";
                 }

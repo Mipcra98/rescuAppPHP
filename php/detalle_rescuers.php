@@ -69,7 +69,7 @@
                         <td></td>
                     </tr>
                 ';
-                if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1'){
+                if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1' && $_SESSION['id']!=$rescuer_id){
                     if($datos['rescuer_admin']=='1'){
                         echo '
                             <tr>
@@ -124,7 +124,7 @@
                     ';
                 }
                 
-                if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1'){
+                if($_SESSION['ademin']=='1' && $check_adm['rescuer_admin']=='1' && $_SESSION['id']!=$rescuer_id){
                     echo '
                         <tr class="has-text-centered" >
                             <td colspan="3" class="has-text-centered">
