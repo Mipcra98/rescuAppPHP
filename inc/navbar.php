@@ -29,10 +29,10 @@
       </div>
 
       <div class="navbar-item column">
-        <div class="has-background-grey has-text-black-bis">La sesión expira en:<div id="temporizador" class="has-text-warning">5 minutos y 0 segundos</div></div>
+        <div class="has-background-grey has-text-black-bis">Tiempo de inactividad:<div id="temporizador" class="has-text-warning">15 minutos y 0 segundos</div></div>
 
         <script type="text/javascript">
-          m = 5
+          m = 15
           s = 0;
           var l = document.getElementById("temporizador");
           var id = window.setInterval(function(){
@@ -41,7 +41,7 @@
               alert("La sesión expiró");
             }
             document.onmousemove = function (){
-              m = 5;
+              m = 15;
               s = 0;
             };
             if(s<=0 && m>0){
