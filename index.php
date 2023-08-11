@@ -31,6 +31,9 @@
     
                   include "./inc/script.php";
             }else{
+              if(isset($_SESSION['id']) && $_GET['vista']!="404"){
+                header("Location: index.php?vista=home");
+              }
               if($_GET['vista']=="login"){
                 include "./vistas/login.php";
               }

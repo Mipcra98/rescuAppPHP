@@ -24,9 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    listar_reportes();
-                ?>
+                <?php listar_reportes(); ?>
+                <script type="text/javascript">
+                    t = 30;
+                    var lista = window.setInterval(function(){
+                        --t;
+                        if (t <= -1){
+                            <?php listar_reportes(); ?>
+                            t = 30;
+                        }
+                    },1200);
+                </script>
                 <tr class="has-text-centered">
                     <td colspan="6">
                         <a href="index.php" class="button has-background-info-dark mt-2 mb-2 ml-2 mr-2 columns is-mobile is-centered is-normal has-text-white-bis">

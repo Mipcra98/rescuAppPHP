@@ -27,6 +27,41 @@
       <div class="navbar-item column">
         <p class="has-text-black-bis">¡Bienvenido <strong class="has-text-black-bis"><?php echo ucwords($_SESSION['nombre'])." ".ucwords($_SESSION['apellido']);?></strong>!</p>
       </div>
+
+      <div class="navbar-item column">
+        <div class="has-background-grey has-text-black-bis">La sesión expira en:<div id="temporizador" class="has-text-warning">5 minutos y 0 segundos</div></div>
+
+        <script type="text/javascript">
+          m = 4
+          s = 59;
+          var l = document.getElementById("temporizador");
+          var id = window.setInterval(function(){
+            document.onmousemove = function (){
+              m = 4;
+              s = 59;
+            };
+            if(m>0){
+              l.innerText = m + " minutos y "+ s + " segundos";
+            }else{
+              l.innerText = s + " segundos";
+            }
+            if(s==0 && m>0){
+              s=59;
+              --m;
+            }
+            
+            --s;
+
+            if (s <= -1){
+              location.href="index.php?vista=logout";
+              alert("La sesión expiró");
+            }
+            
+          },1200);
+        </script>
+
+      </div>
+
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
