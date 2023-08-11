@@ -32,32 +32,31 @@
         <div class="has-background-grey has-text-black-bis">La sesión expira en:<div id="temporizador" class="has-text-warning">5 minutos y 0 segundos</div></div>
 
         <script type="text/javascript">
-          m = 4
-          s = 59;
+          m = 5
+          s = 0;
           var l = document.getElementById("temporizador");
           var id = window.setInterval(function(){
+            if (s <= -1){
+              location.href="index.php?vista=logout";
+              alert("La sesión expiró");
+            }
             document.onmousemove = function (){
-              m = 4;
-              s = 59;
+              m = 5;
+              s = 0;
             };
+            if(s<=0 && m>0){
+              s=59;
+              --m;
+            }
             if(m>0){
               l.innerText = m + " minutos y "+ s + " segundos";
             }else{
               l.innerText = s + " segundos";
             }
-            if(s==0 && m>0){
-              s=59;
-              --m;
-            }
-            
             --s;
-
-            if (s <= -1){
-              location.href="index.php?vista=logout";
-              alert("La sesión expiró");
-            }
             
-          },1200);
+
+          },1000);
         </script>
 
       </div>

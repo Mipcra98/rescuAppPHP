@@ -1,6 +1,22 @@
-<?php
-    function listar_reportes(){
+<?php require_once '../php/main.php'; ?>
+<table class="table is-striped is-hoverable is-fullwidth is-bordered has-background-grey-lighter">
+            <thead>
+                <tr class="has-background-grey-light">
+                    <th class="has-text-centered" >ID</th>
+                    <th class="has-text-centered" >Fecha y Hora</th>
+                    <th class="has-text-centered" >Tipo</th>
+                    <th class="has-text-centered" >Información</th>
+                    <th class="has-text-centered" >Estado</th>
+                    <th class="has-text-centered" >Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
 
+
+
+
+
+            <?php
         $campos="user.user_id,user.user_name,user.user_surname,user.user_birthday,user.user_blood,user.user_gender,report.report_id,report.report_dateTime,report.report_numberVictims,report.report_victimStatus,report.report_accidentTipe,report.report_crashTipe,report.report_runOver,report.report_userType,report.report_attendend";
 
         //Busqueda no utilizada, pero para futuro ya está disponible
@@ -32,7 +48,7 @@
             ';
         }else{
             foreach($datos as $rows){
-                require_once "./php/calc_edad.php";
+                require_once "../php/calc_edad.php";
                 $edad=calc_edad($rows['user_birthday']);    //Calculo de edad del usuario
 
                 switch($rows['user_blood']){   //definición de sangre del usuario
@@ -220,4 +236,18 @@
 
         }
         $conexion=null;
-    }
+?>
+
+
+
+
+                <!--<tr class="has-text-centered">
+                    <td colspan="6">
+                        <a href="index.php" class="button has-background-info-dark mt-2 mb-2 ml-2 mr-2 columns is-mobile is-centered is-normal has-text-white-bis">
+                            <strong>Haga clic acá para recargar el listado</strong>
+                        </a>
+                    </td>
+                </tr>-->
+
+            </tbody>
+        </table>

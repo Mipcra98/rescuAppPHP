@@ -62,6 +62,9 @@
         #Inicio de Sesión
         if($check_usuario['rescuer_mail']==$correo && md5($clave)==$check_usuario['rescuer_pass']){
             if($check_usuario['rescuer_state']=='1'){
+                
+                require "./inc/session_start.php";
+
                 $_SESSION['id']=$check_usuario['rescuer_id'];
                 $_SESSION['ci']=$check_usuario['rescuer_ci'];
                 $_SESSION['nombre']=$check_usuario['rescuer_name'];
