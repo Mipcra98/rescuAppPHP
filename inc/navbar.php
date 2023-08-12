@@ -64,7 +64,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a href="index.php?vista=DwlRescueAppAPK" class="button is-normal has-text-black-bis has-background-danger-dark" style="border-color:#000000;">
+            <a href="https://drive.google.com/uc?id=1EXcr8pQJq0Y9cx3D6Ee4-5ifRPTIiTUq&export=download" target="RescueAppAPK" class="button is-normal has-text-black-bis has-background-danger-dark" style="border-color:#000000;">
               <strong>Descargar APK</strong>
             </a>
             <?php 
